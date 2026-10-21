@@ -1,0 +1,1082 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>박재열 변론 슬라이드</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@600;700&display=swap">
+<style>
+/* Layout concept: a 1280x720 slide canvas scaled to the window under a thin toolbar.
+   Content slides read as claim title -> evidence rows with source chips.
+   Pending edits (after the indictment arrives) show as hatched top strips, colored chips and a dashed memo box. */
+:root{
+  --bg:#E7EBEF; --paper:#FBFCFD; --ink:#14202B; --ink2:#43505C; --ink3:#697684;
+  --rule:#D3DAE0; --rule2:#E5E9ED;
+  --accent:#1D4E6E; --accent-ink:#FFFFFF; --accent-soft:#E1ECF3;
+  --good:#17684C; --good-soft:#DFF0E7; --bad:#9F3626; --bad-soft:#F7E5E1;
+  --warn:#7F5700; --warn-soft:#F6ECCD; --none:#56626E; --none-soft:#E9EDF0;
+  --ff-fix:#B3225B; --fi-fix:#FFFFFF; --ff-law:#5B3FA6; --fi-law:#FFFFFF;
+  --ff-orig:#A85A00; --fi-orig:#FFFFFF; --ff-ocr:#0E7388; --fi-ocr:#FFFFFF;
+  --ff-infer:#4A5F7A; --fi-infer:#FFFFFF; --ff-hold:#14202B; --fi-hold:#FFFFFF;
+  --shadow:0 1px 2px rgba(20,32,43,.10),0 10px 30px rgba(20,32,43,.12);
+  --serif:'Noto Serif KR','Noto Serif CJK KR','Nanum Myeongjo','Batang',serif;
+  --sans:'IBM Plex Sans KR','Noto Sans KR','Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D1217; --paper:#151C23; --ink:#E8EEF3; --ink2:#B0BCC7; --ink3:#8795A2;
+    --rule:#2B3640; --rule2:#222C35;
+    --accent:#86B8D9; --accent-ink:#0B1620; --accent-soft:#1B2B38;
+    --good:#6FCDA7; --good-soft:#15291F; --bad:#F29A89; --bad-soft:#341B17;
+    --warn:#E9C66B; --warn-soft:#2E2813; --none:#A5B0BB; --none-soft:#202931;
+    --ff-fix:#F58AB0; --fi-fix:#2A0A17; --ff-law:#BBA8F4; --fi-law:#1E1240;
+    --ff-orig:#F2AE55; --fi-orig:#2B1A00; --ff-ocr:#62C6D9; --fi-ocr:#04262D;
+    --ff-infer:#AFC2DA; --fi-infer:#10202F; --ff-hold:#E6EDF3; --fi-hold:#0E161D;
+    --shadow:0 1px 2px rgba(0,0,0,.5),0 10px 30px rgba(0,0,0,.45);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D1217; --paper:#151C23; --ink:#E8EEF3; --ink2:#B0BCC7; --ink3:#8795A2;
+  --rule:#2B3640; --rule2:#222C35;
+  --accent:#86B8D9; --accent-ink:#0B1620; --accent-soft:#1B2B38;
+  --good:#6FCDA7; --good-soft:#15291F; --bad:#F29A89; --bad-soft:#341B17;
+  --warn:#E9C66B; --warn-soft:#2E2813; --none:#A5B0BB; --none-soft:#202931;
+  --ff-fix:#F58AB0; --fi-fix:#2A0A17; --ff-law:#BBA8F4; --fi-law:#1E1240;
+  --ff-orig:#F2AE55; --fi-orig:#2B1A00; --ff-ocr:#62C6D9; --fi-ocr:#04262D;
+  --ff-infer:#AFC2DA; --fi-infer:#10202F; --ff-hold:#E6EDF3; --fi-hold:#0E161D;
+  --shadow:0 1px 2px rgba(0,0,0,.5),0 10px 30px rgba(0,0,0,.45);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;
+  padding-block:0;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  -webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+#app{height:100%;display:flex;flex-direction:column;gap:10px;padding-block:10px}
+a{color:inherit}
+button{font:inherit}
+
+/* toolbar */
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;min-height:38px}
+.brand{font-family:var(--serif);font-weight:700;font-size:15px;white-space:nowrap}
+.pill{font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--warn-soft);color:var(--warn);white-space:nowrap}
+.sp{flex:1}
+.cover .body{display:flex;flex-direction:column;justify-content:center}
+.btn{font-size:13px;font-weight:500;padding:6px 12px;min-height:34px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:6px;cursor:pointer}
+.btn:hover{border-color:var(--ink3)}
+.btn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:focus-visible,.xr:focus-visible,.ovc:focus-visible,.goto:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn.nav{width:38px;padding:6px 0;font-size:16px}
+.cnt{min-width:70px;text-align:center;font-size:13px;color:var(--ink2);font-variant-numeric:tabular-nums}
+
+/* stage */
+.stage{flex:1;min-height:0;display:grid;place-items:center;overflow:hidden}
+.fit{position:relative}
+.canvas{position:absolute;left:0;top:0;width:1280px;height:720px;transform-origin:0 0;background:var(--paper);color:var(--ink);box-shadow:var(--shadow);border-radius:4px;overflow:hidden}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;padding:30px 56px 20px;word-break:keep-all;overflow-wrap:break-word}
+.slide.on{display:flex;animation:fi .18s ease-out}
+@keyframes fi{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.slide.on{animation:none}}
+
+.hb{position:absolute;left:0;right:0;top:0;height:9px;background:repeating-linear-gradient(135deg,var(--hc) 0 9px,transparent 9px 18px)}
+.top{display:flex;align-items:center;gap:10px;min-height:24px;font-size:12.5px;color:var(--ink3);letter-spacing:.03em}
+.top .part{font-weight:600;color:var(--ink2)}
+.lks{display:inline-flex;gap:4px}
+.lk.w{width:auto;padding:0 8px}
+.lk{display:inline-grid;place-items:center;min-width:22px;height:22px;border-radius:5px;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:13px}
+.ribbon{margin-left:auto;display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
+.fchip{display:inline-flex;align-items:center;font-size:12px;font-weight:700;padding:3px 9px;border-radius:4px;background:var(--ff);color:var(--fi);white-space:nowrap;letter-spacing:0}
+.fchip.fix{--ff:var(--ff-fix);--fi:var(--fi-fix)}.fchip.law{--ff:var(--ff-law);--fi:var(--fi-law)}
+.fchip.orig{--ff:var(--ff-orig);--fi:var(--fi-orig)}.fchip.ocr{--ff:var(--ff-ocr);--fi:var(--fi-ocr)}
+.fchip.infer{--ff:var(--ff-infer);--fi:var(--fi-infer)}.fchip.hold{--ff:var(--ff-hold);--fi:var(--fi-hold)}
+.ttl{font-family:var(--serif);font-weight:700;line-height:1.32;margin:8px 0 6px;text-wrap:balance}
+.ttl.s1{font-size:36px}.ttl.s2{font-size:31px}.ttl.s3{font-size:26px}.ttl.s4{font-size:22px}
+.lead{margin:0 0 8px;font-size:16.5px;line-height:1.5;color:var(--ink2)}
+.body{flex:1;min-height:0;overflow:auto}
+.memo{margin-top:8px;border:1.5px dashed var(--ink3);border-left:7px solid var(--hc);border-radius:5px;padding:6px 12px;display:flex;flex-direction:column;gap:3px;font-size:13px;line-height:1.4;background:var(--paper)}
+.mr{display:flex;gap:9px;align-items:baseline}
+.mr .fchip{flex:none}
+.mr .mt{min-width:0}
+.mref{flex:none;margin-left:auto;padding-left:10px;font-size:12px;color:var(--ink3);white-space:nowrap}
+.foot{display:flex;gap:16px;margin-top:8px;padding-top:6px;border-top:1px solid var(--rule2);font-size:11.5px;color:var(--ink3)}
+body.noflags .fx{display:none!important}
+
+/* evidence rows */
+.evs{display:flex;flex-direction:column}
+.ev{display:grid;grid-template-columns:104px minmax(0,1fr);column-gap:14px;padding:9px 0;border-top:1px solid var(--rule2)}
+.ev:first-child{border-top:1px solid var(--rule)}
+.mkc{display:inline-block;font-size:12px;font-weight:700;padding:3px 8px;border-radius:4px;white-space:nowrap}
+.k-g .mkc{background:var(--good-soft);color:var(--good)}
+.k-b .mkc{background:var(--bad-soft);color:var(--bad)}
+.k-x .mkc{background:var(--warn-soft);color:var(--warn)}
+.k-n .mkc{background:var(--none-soft);color:var(--none)}
+.evt{font-size:var(--fs,18px);line-height:1.55}
+.k-n .evt{color:var(--ink2)}
+.dense .evt{--fs:16px}
+.dense .ev{padding:7px 0}
+.srcs{display:flex;flex-wrap:wrap;gap:5px 6px;margin-top:5px}
+.src{font-size:12.5px;line-height:1.4;padding:1px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);white-space:nowrap;font-variant-numeric:tabular-nums}
+.src b{font-weight:600}
+.src i{font-style:normal;font-size:11px;margin-left:6px;padding-left:6px;border-left:1px solid currentColor}
+.src[class*="st-"]{background:transparent;border:1px dashed var(--ink3);color:var(--ink2)}
+.xr{color:var(--accent);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.evs.in .ev{grid-template-columns:minmax(0,1fr);row-gap:4px;padding:7px 0}
+.evs.in .evt{font-size:var(--fs,15px);line-height:1.5}
+.evs.in .evb{display:block}
+.evs.in .srcs{display:inline;margin:0}
+.evs.in .src{display:inline-block;margin:3px 5px 0 0}
+.evs.in .evt{display:inline}
+.evs.in .evt::after{content:' '}
+.cards.big .evs.in .evt{--fs:16.5px}
+.cards.big .card h3{font-size:20px}
+.cards.big .card{gap:8px}
+.cards.big .ev{padding:9px 0}
+
+/* cards */
+.cards{display:grid;gap:14px;margin-bottom:8px}
+.cards.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{min-width:0;display:flex;flex-direction:column;gap:6px;padding:14px 16px;border:1px solid var(--rule);border-radius:8px;background:var(--paper)}
+.card.hl{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.card header{display:flex;gap:10px;align-items:flex-start}
+.card h3{margin:0;font-family:var(--serif);font-weight:700;font-size:19px;line-height:1.4}
+.cards.c4 .card h3,.cards.g2x2 .card h3{font-size:16.5px}
+.cn{flex:none;width:30px;height:30px;border-radius:7px;display:grid;place-items:center;background:var(--accent);color:var(--accent-ink);font-weight:700}
+.go{margin:4px 0 0;font-size:13.5px;color:var(--ink2)}
+.cards.g2x2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g2x2 .evs.in .evt{--fs:14px}
+.cards.g2x2 .card{padding:11px 14px;gap:3px}
+.cards.c4 .evs.in .evt{--fs:14px}
+
+/* cover */
+.cover{justify-content:center}
+.cv-t{margin:14px 0 8px;font-family:var(--serif);font-weight:700;font-size:54px;line-height:1.25;text-wrap:balance}
+.cv-s{font-size:19px;color:var(--ink2)}
+.cv-h{margin:26px 0 8px;font-size:13px;font-weight:600;letter-spacing:.05em;color:var(--ink3)}
+.cv-chain{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.cv-link{padding:9px 2px 0;border-top:3px solid var(--accent);font-size:13px;line-height:1.5;color:var(--ink2)}
+.cv-link b{display:block;margin-bottom:3px;font-size:15px;color:var(--ink)}
+.cv-note{margin-top:20px;padding:10px 14px;border-left:4px solid var(--warn);background:var(--warn-soft);color:var(--warn);font-size:14.5px;line-height:1.5;font-weight:500}
+
+/* chain diagram (slide 3) */
+.chain{display:flex;align-items:stretch;gap:0;margin:6px 0 12px}
+.cn-box{flex:1;min-width:0;padding:12px 14px;border:1px solid var(--rule);border-radius:8px;background:var(--paper)}
+.cn-box h4{margin:0 0 3px;font-size:18px;font-family:var(--serif)}
+.cn-box p{margin:0;font-size:13.5px;line-height:1.45;color:var(--ink2)}
+.cn-box.me{border-color:var(--accent);background:var(--accent-soft)}
+.cn-arrow{flex:none;width:34px;display:grid;place-items:center;color:var(--ink3);font-size:20px}
+
+/* steps strip */
+.steps{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);margin:2px 0 8px}
+.step{position:relative;padding:22px 12px 0 0;font-size:13.5px;line-height:1.45;color:var(--ink2)}
+.step::before{content:"";position:absolute;left:0;right:0;top:7px;height:2px;background:var(--rule)}
+.step::after{content:"";position:absolute;left:0;top:0;width:16px;height:16px;border-radius:50%;background:var(--accent)}
+.step.b::after{background:var(--bad)}.step.g::after{background:var(--good)}.step.x::after{background:var(--warn)}
+.step .tm{display:block;font-size:15px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.step .ss{display:block;margin-top:4px;font-size:12px;color:var(--ink3)}
+
+/* timeline swimlane */
+.tlg{margin-top:2px}
+.tl-axis{position:relative;height:18px;margin:0 14px 0 118px}
+.tl-tick{position:absolute;top:2px;transform:translateX(-50%);font-size:11.5px;color:var(--ink3);font-variant-numeric:tabular-nums}
+.tl-lane{display:flex;height:36px;border-top:1px solid var(--rule2)}
+.tl-lane:last-child{border-bottom:1px solid var(--rule2)}
+.tl-lane.me{background:var(--accent-soft)}
+.tl-lab{flex:none;width:104px;display:flex;align-items:center;font-size:13px;font-weight:600;color:var(--ink2)}
+.tl-lane.me .tl-lab{color:var(--accent)}
+.tl-in{position:relative;flex:1;margin:0 14px}
+.tl-gl{position:absolute;top:0;bottom:0;width:1px;background:var(--rule2)}
+.tl-dot{position:absolute;top:50%;width:23px;height:23px;margin:-11.5px 0 0 -11.5px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;background:var(--none);color:var(--paper);font-variant-numeric:tabular-nums}
+.tl-dot.g,.tl-bar.g{background:var(--good)}.tl-dot.b,.tl-bar.b{background:var(--bad)}.tl-dot.x,.tl-bar.x{background:var(--warn)}
+.tl-bar{position:absolute;top:50%;height:24px;margin-top:-12px;border-radius:12px;background:var(--none);color:var(--paper);display:flex;align-items:center;padding-left:6px;font-size:12px;font-weight:700}
+.tl-key{columns:2;column-gap:28px;margin-top:6px;font-size:12px;line-height:1.35}
+.tl-key div{break-inside:avoid;display:flex;gap:8px;padding:1px 0}
+.tl-key .kn{flex:none;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;background:var(--none);color:var(--paper)}
+.tl-key .kn.g{background:var(--good)}.tl-key .kn.b{background:var(--bad)}.tl-key .kn.x{background:var(--warn)}
+.tl-key time{font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink)}
+.tl-key small{color:var(--ink3);font-size:11.5px;white-space:nowrap}
+
+/* time bar (slide 17) */
+.tb17{position:relative;height:116px;margin:6px 30px 4px}
+.tb17 .tk{position:absolute;top:70px;transform:translateX(-50%);font-size:11.5px;color:var(--ink3);font-variant-numeric:tabular-nums}
+.tb17 .ln{position:absolute;top:62px;left:0;right:0;height:1px;background:var(--rule)}
+.tb17 .rg{position:absolute;top:22px;height:34px;border-radius:6px;background:var(--bad-soft);border:1px solid var(--bad);color:var(--bad);display:flex;align-items:center;justify-content:flex-end;padding-right:14px;font-size:13px;font-weight:600;white-space:nowrap}
+.tb17 .mkr{position:absolute;top:0;bottom:46px;width:0;border-left:2px dashed var(--accent)}
+.tb17 .mkr.alt{border-left-color:var(--warn)}
+.tb17 .mkr span{position:absolute;top:-2px;left:6px;font-size:12.5px;font-weight:600;color:var(--accent);white-space:nowrap}
+.tb17 .mkr.alt span{color:var(--warn);left:auto;right:6px}
+
+/* ladder (slide 30) */
+.lad{display:flex;flex-direction:column;gap:8px}
+.rung{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:14px;align-items:center;padding:10px 16px;border:1px solid var(--rule);border-radius:8px}
+.rung .rn{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--accent-ink);font-weight:700}
+.rung.law{border-style:dashed;border-color:var(--ff-law)}
+.rung .rt{font-size:17px;line-height:1.5}
+.rung .rs{display:flex;flex-wrap:wrap;gap:5px;justify-content:flex-end;max-width:330px}
+
+/* summary rows (slide 29) */
+.srow{display:grid;grid-template-columns:40px 190px minmax(0,1fr) 150px;gap:14px;align-items:baseline;padding:11px 0;border-top:1px solid var(--rule)}
+.srow:last-child{border-bottom:1px solid var(--rule)}
+.srow .sn{font-size:22px;font-weight:700;color:var(--accent)}
+.srow .sh{font-family:var(--serif);font-weight:700;font-size:18px}
+.srow .st{font-size:16.5px;line-height:1.55}
+.srow .sg{font-size:13px;color:var(--ink2)}
+
+/* appendix tables / lists */
+.tabw{overflow:auto}
+table.tb{width:100%;border-collapse:collapse;font-size:12.5px;line-height:1.5}
+.tb th{position:sticky;top:0;text-align:left;font-weight:600;color:var(--ink2);background:var(--paper);border-bottom:2px solid var(--ink);padding:6px 8px}
+.tb td{vertical-align:top;border-bottom:1px solid var(--rule);padding:7px 8px}
+.tb td.nm{font-weight:700;white-space:nowrap}
+.tb td.sm{color:var(--ink2)}
+.tb .rf{display:block;margin-top:4px}
+.toc{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+.goto{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:baseline;width:100%;text-align:left;padding:14px 18px;border:1px solid var(--rule);border-radius:8px;background:var(--paper);color:var(--ink);cursor:pointer}
+.goto:hover{border-color:var(--accent)}
+.goto b{font-family:var(--serif);font-size:19px}
+.goto span{display:block;margin-top:3px;font-size:13.5px;color:var(--ink2)}
+.goto em{font-style:normal;font-size:13px;color:var(--ink3);font-variant-numeric:tabular-nums}
+.srcl{columns:3;column-gap:26px;font-size:12.5px;line-height:1.45}
+.srcl div{break-inside:avoid;padding:4px 0;border-bottom:1px solid var(--rule2);overflow-wrap:anywhere}
+.srcl b{font-weight:600;color:var(--accent)}
+.srcl small{display:block;color:var(--ink3);font-size:11.5px}
+.work{columns:2;column-gap:28px;font-size:13px;line-height:1.45}
+.we{break-inside:avoid;display:grid;grid-template-columns:34px minmax(0,1fr);gap:8px;padding:6px 0;border-bottom:1px solid var(--rule2);cursor:pointer}
+.we .wn{font-weight:700;font-variant-numeric:tabular-nums;color:var(--accent)}
+.we b{font-weight:600}
+.we .wr{display:block;font-size:11.5px;color:var(--ink3)}
+.steps2{margin:0 0 8px;padding-left:20px;font-size:14px;line-height:1.55;color:var(--ink2)}
+
+/* overlays */
+.ov{position:fixed;inset:0;z-index:70;overflow:auto;background:var(--bg);
+  padding:calc(env(safe-area-inset-top,0px) + 16px) max(16px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 24px) max(16px,env(safe-area-inset-left,0px))}
+.ov-in{max-width:1180px;margin:0 auto}
+.ov-h{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.ov-h h2{margin:0;font-family:var(--serif);font-size:20px}
+.ov h3{margin:20px 0 8px;font-size:13px;font-weight:600;letter-spacing:.05em;color:var(--ink3)}
+.ovg{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.ovc{display:flex;flex-direction:column;gap:6px;min-height:92px;padding:10px 12px;text-align:left;border:1px solid var(--rule);border-radius:8px;background:var(--paper);color:var(--ink);cursor:pointer}
+.ovc.cur{outline:2px solid var(--accent)}
+.ovn{font-size:12px;color:var(--ink3);font-variant-numeric:tabular-nums}
+.ovt{font-size:13.5px;line-height:1.4;font-weight:500}
+.ovf{display:flex;gap:4px;margin-top:auto}
+.dotf{width:11px;height:11px;border-radius:2px;background:var(--ff)}
+.dotf.fix{--ff:var(--ff-fix)}.dotf.law{--ff:var(--ff-law)}.dotf.orig{--ff:var(--ff-orig)}.dotf.ocr{--ff:var(--ff-ocr)}.dotf.infer{--ff:var(--ff-infer)}.dotf.hold{--ff:var(--ff-hold)}
+body.noflags .ovf{display:none}
+.lg{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:16px;background:rgba(8,12,16,.55)}
+.lgp{width:100%;max-width:680px;max-height:100%;overflow:auto;padding:20px 22px;border-radius:10px;background:var(--paper);box-shadow:var(--shadow)}
+.lgp h2{margin:0 0 4px;font-family:var(--serif);font-size:19px}
+.lgp h3{margin:16px 0 8px;font-size:13px;letter-spacing:.05em;color:var(--ink3)}
+.lgr{display:flex;gap:10px;align-items:baseline;padding:4px 0;font-size:14px;line-height:1.5}
+.lgr > :first-child{flex:none;min-width:92px}
+
+/* reader mode (narrow screens): slides flow as pages */
+html.reader,html.reader body{height:auto}
+html.reader #app{height:auto;min-height:100%}
+html.reader .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--bg);padding-block:6px}
+html.reader .stage{display:block;place-items:normal;justify-items:normal;overflow:visible}
+html.reader .fit{width:auto!important;height:auto!important;justify-self:stretch}
+html.reader .canvas{position:static;width:auto;height:auto;transform:none!important;box-shadow:none;background:transparent;overflow:visible}
+html.reader .slide{position:relative;inset:auto;padding:14px 0 24px}
+html.reader .hb{position:static;height:7px;margin-bottom:8px}
+html.reader .body{overflow:visible}
+html.reader .ttl{font-size:23px!important}
+html.reader .cv-t{font-size:32px}
+html.reader .cards,html.reader .cards.c2,html.reader .cards.c3,html.reader .cards.c4,html.reader .cards.g2x2{grid-template-columns:minmax(0,1fr)}
+html.reader .cv-chain{grid-template-columns:minmax(0,1fr)}
+html.reader .chain{flex-direction:column}
+html.reader .cn-arrow{width:auto;height:26px;transform:rotate(90deg)}
+html.reader .steps{grid-auto-flow:row;grid-auto-columns:auto}
+html.reader .ev{grid-template-columns:minmax(0,1fr);row-gap:4px}
+html.reader .evt,html.reader .dense .evt{--fs:16px}
+html.reader .tl-gr,html.reader .tb17{display:none}
+html.reader .tl-key{columns:1}
+html.reader .srow{grid-template-columns:34px minmax(0,1fr)}
+html.reader .srow .st,html.reader .srow .sg{grid-column:2}
+html.reader .rung{grid-template-columns:36px minmax(0,1fr)}
+html.reader .rung .rs{grid-column:2;justify-content:flex-start;max-width:none}
+html.reader table.tb{min-width:720px}
+html.reader .srcl,html.reader .work{columns:1}
+html.reader .ribbon{margin-left:0;justify-content:flex-start}
+html.reader .top{flex-wrap:wrap}
+html.reader .brand{display:none}
+</style>
+
+<div id="app">
+  <div class="bar" role="toolbar" aria-label="슬라이드 도구">
+    <span class="brand">박재열 변론</span>
+    <span class="pill">초안 · 공소장 본문 미확보</span>
+    <span class="sp"></span>
+    <button class="btn nav" id="prev" aria-label="이전 슬라이드">‹</button>
+    <span class="cnt" id="cnt" aria-live="polite">1 / 1</span>
+    <button class="btn nav" id="next" aria-label="다음 슬라이드">›</button>
+    <button class="btn" id="bOv" title="전체 보기 (G)">전체 보기</button>
+    <button class="btn" id="bFl" aria-pressed="true" title="수정 표시 켜기/끄기 (F)">수정 표시</button>
+    <button class="btn" id="bLg" title="범례 (L)">범례</button>
+  </div>
+  <div class="stage" id="stage"><div class="fit" id="fit"><div class="canvas" id="canvas"></div></div></div>
+</div>
+<div class="ov" id="ov" hidden role="dialog" aria-label="전체 슬라이드"><div class="ov-in" id="ovIn"></div></div>
+<div class="lg" id="lg" hidden role="dialog" aria-label="범례"><div class="lgp" id="lgP"></div></div>
+<script>
+/* ===== 본편 슬라이드 데이터 (매핑표 3절 기준, ref = 매핑표 번호) =====
+   k: g 유리 / b 불리 / x 상충·주의 / n 문서에서 확인되지 않음
+   s: "파일 pp; 파일 pp !상태"  (!i 색인, !x 검색 발췌, !n 진술인 성명 미확인, !q 질문문 인용)
+   fl: [유형, 근거 위치, 메모]  유형 FIX 공소장 교체 / ORIG 원문 확인 / LAW 법리 확인 / OCR OCR 대조 / INFER 추론 구분 / HOLD 추후 확정 */
+const SL=[
+{ref:'1',part:'a',lay:'cover',title:'박재열 7군단장은 내란에 부화수행하지 않았다',
+ sub:'2026고합565 · 피고인 박재열 · 변론 요지 초안',
+ chainH:'특검이 증명해야 할 다섯 고리 (영장·신문조서·증거목록에서 역산한 것이며 공소사실 원문이 아님)',
+ chain:[
+  ['① 지작사 지시','지작사령관이 00:40~00:55 상황평가회의에서 「신속대응사단은 의명 투입준비태세를 유지」하라고 지시했고 7군단이 이를 받았다'],
+  ['② 박재열의 지시','박재열이 01:00~01:10 군단 상황평가회의에서 「계엄군 임무 수행 준비, 2신속사는 임무 부여 시 즉각 투입 준비」를 지시했다'],
+  ['③ 해제 의결 이후 지속','그 지시가 국회 해제 의결(01:03) 뒤에도 중지 없이 유지됐다'],
+  ['④ 인식과 목적','박재열은 그 준비가 위법한 계엄 속에서 군을 쓰기 위한 것임을 알고 가담하려 했다'],
+  ['⑤ 사후 정황','02:30 이후와 국회 답변 과정에서 사실을 가리려 했고 이는 가담 의식을 보여 준다']],
+ note:'2026.10.21 현재 공소장 본문은 확보되지 않았습니다. 죄명과 공소사실 문구는 공소장 확보 후 교체합니다.',
+ fl:[['FIX','매핑표 6절 1번','결론 문장과 다섯 고리 문구를 공소사실 원문으로 교체. 죄명 표기가 기록마다 다름(내란부화수행 / 내란중요임무종사, 부록 C 13번)']]},
+
+{ref:'2',part:'a',link:'①②③',lay:'cards',cols:3,title:'한 장 결론',
+ lead:'세 가지로 정리합니다. 불리한 자료는 본편에서 빼고 부록 A에 정리했습니다.',
+ cards:[
+  {n:'①',h:'7군단에는 계엄 임무가 없었다',s:'11권_2-3 p.27; 11권_2-1 p.22; 11권_2-2 p.5',go:'근거: {{3,4,5}}'},
+  {n:'②',h:'01:00 지시는 ‘의명 대기’ 수준이고 이행 흔적이 없다',s:'11권_2-3 p.45; 11권_2-3 p.15·49; 11권_1-2 p.27·33·39',go:'근거: {{9,15}}'},
+  {n:'③',h:'02:30 합참의 직통 연락이 2신속사에 오자 곧바로 확인·중지했다',s:'11권_2-3 p.40·49; 11권_2-1 p.14',go:'근거: {{7,24}}'}],
+ fl:[['FIX','매핑표 6절 1번','공소사실의 구조에 맞춰 ①~③ 주장을 다시 배열'],
+     ['ORIG','매핑표 6절 4번','7군단 종합상황일지(증거 57번)·지작사 상황일지(증거 12번) 원문 열람 후 인용 대조']]},
+
+{ref:'3',part:'a',link:'전제',lay:'chain',title:'지휘계통은 합참(계엄사)–지작사–7군단–2신속사이며, 7군단은 지작사 예비부대인 기동군단이다',
+ chain:[['합참(계엄사)',''],['지작사','지작사령관 강호필'],['7군단','박재열 군단장 · 지작사 예비부대인 기동군단 · 지역 책임 없음',1],['2신속사','계엄 업무 없음 · 평시 7군단·지작사 통제']],
+ items:[
+  {k:'g',t:'박서호: 7군단은 지역 책임이 없는 지작사 예비부대이고 기동군단이다.',s:'11권_2-1 p.22'},
+  {k:'g',t:'임태호: 2신속사는 계엄 업무가 없고, 평시에는 7군단·지작사의 통제를 받는다.',s:'11권_2-1 p.5~6'},
+  {k:'b',t:'2신속사가 7군단 지휘선에 있다는 점은 불리하므로 {{4}}와 함께 제시합니다. 지시할 수 있는 위치와 실제 지시는 구별됩니다(부록 A 15번).',s:'11권_2-1 p.5~6'}],
+ fl:[['FIX','매핑표 6절 1번','공소사실의 지휘·명령 경로 서술과 대조해 교체']]},
+
+{ref:'4',part:'a',link:'①',lay:'ev',title:'7군단에는 계엄 임무·관할 지역이 없었다',
+ items:[
+  {k:'g',t:'박재열, 박서호, 김종연이 7군단에는 계엄 임무와 관할 지역이 없다는 취지로 진술했다.',s:'11권_2-3 p.27; 11권_2-1 p.22; 11권_2-2 p.5'},
+  {k:'g',t:'임재순: 지작사령관의 계엄상황실 지시는 7군단과 무관하고, 준비한 것이 없다.',s:'6권_2 p.15 !n'},
+  {k:'g',t:'지작사의 지역계엄사 개소 보고 목록(2·1·3·수도·5군단)에 7군단이 없다.',s:'9권_5 p.33~34'}],
+ fl:[['FIX','매핑표 6절 1번','공소사실이 7군단의 임무·지위를 어떻게 적었는지 대조'],
+     ['ORIG','매핑표 6절 6번','9권_10의 지역계엄사 27개 부대 목록 대조는 색인 단계. 6권_2 진술인 성명(색인상 임재순) 확인']]},
+
+{ref:'5',part:'a',link:'①④',lay:'ev',title:'경계태세 2급 조치부호는 계엄과 무관한 조치였다',
+ items:[
+  {k:'g',t:'합참 단편명령 24-43호의 조치부호 26개에 「계엄과 관련된 내용이 포함되지 않은 것으로 확인」됐다.',s:'9권_10 p.21~22'},
+  {k:'g',t:'조치부호 목록에 「신속대응부대 높은 수준의 투입 준비」가 들어 있다.',s:'9권_10 p.21~22'},
+  {k:'g',t:'박재열: 경계태세 2급은 대북 감시 강화로 이해했다.',s:'11권_2-3 p.29'},
+  {k:'x',t:'9권_10의 작성 주체는 인용 쪽에서 확인되지 않습니다(색인상 국방부 감사).',s:'9권_10 p.21~22 !i'}],
+ fl:[['FIX','매핑표 6절 1번','공소사실이 경계태세 2급 조치를 어떻게 적었는지 대조'],
+     ['ORIG','매핑표 6절 6번','9권_10 작성 주체(색인상 국방부 감사)를 첫 쪽에서 확인']]},
+
+{ref:'6',part:'a',link:'전체',lay:'tl',title:'기준 시간선: 12.3 22:40 ~ 12.4 04:45',
+ lead:'조직별로 본 시간 순서입니다. 번호는 아래 목록과 같습니다. 가로축은 00:00~03:30 구간을 넓게 잡은 비례 눈금입니다.',
+ tl:[
+  {n:1,t:'22:40',lane:0,txt:'합참, 전군 경계태세 2급 발령(단편명령 24-43호)',s:'9권_10 p.22'},
+  {n:2,t:'22:40',lane:2,k:'x',txt:'박재열, 안보폰 전화로 계엄 인지(시각은 OCR 불명)',s:'11권_2-3 p.28·31'},
+  {n:3,t:'23:07',lane:3,txt:'위기조치반 소집 지시',s:'11권_2-3 p.15·49'},
+  {n:4,t:'23:18',lane:1,k:'g',txt:'지작사령관, 지역계엄사 설치 지시. 개소 보고 군단에 7군단 없음',s:'9권_5 p.33~34'},
+  {n:5,t:'00:07',lane:1,txt:'강호필, TV 뉴스로 국회 투입 확인(박재열 무관)',s:'9권_5 p.32'},
+  {n:6,t:'00:31',lane:4,txt:'김용현→박안수: 국회에 경력·병력 집중 지시(박재열 무관)',s:'9권_5 p.34~35'},
+  {n:7,t:'00:40',t2:'00:55',lane:1,k:'x',txt:'지작사 군단장 회의. 영장은 「신속대응사단은 의명 투입준비태세 유지」',s:'9권_5 p.35; 10권_9-2 p.29~30; 6권_1 p.31'},
+  {n:8,t:'01:00',t2:'01:10',lane:2,k:'b',txt:'7군단 군단-사단 상황평가회의. 일지 01:10 항이 불리한 핵심 기재',s:'11권_2-4 p.3; 11권_2-3 p.33·36'},
+  {n:9,t:'01:03',lane:4,k:'x',txt:'국회 해제요구 결의안 의결(01:01로 적은 기록도 있음)',s:'9권_5 p.35; 11권_1-1 p.18'},
+  {n:10,t:'02:30',lane:3,k:'g',txt:'합참 계엄상황실→2신속사 직통: 출동준비 문의·요청',s:'11권_2-3 p.5·15·49; 11권_2-1 p.7·13'},
+  {n:11,t:'02:39',lane:3,k:'x',txt:'사단장→군단장 보고(02:40으로 적은 기록도 있음)',s:'11권_2-3 p.49·50; 11권_2-1 p.14'},
+  {n:12,t:'02:42',lane:2,k:'g',txt:'군단장→지작사 참모장 보고',s:'11권_2-3 p.4·50'},
+  {n:13,t:'02:52',lane:1,k:'x',txt:'지작사령관 「출동준비 일체 하지 않도록」(02:50으로 적은 기록도 있음)',s:'11권_2-3 p.16·50'},
+  {n:14,t:'02:53',lane:2,k:'x',txt:'군단장→사단장 전달(최초본과 수정본 내용이 다름)',s:'11권_2-3 p.49·50'},
+  {n:15,t:'02:57',lane:3,k:'g',txt:'출동준비 중지 보고(02:57~02:58), 03:00경 병력 취침',s:'11권_2-3 p.49; 11권_1-2 p.40'},
+  {n:16,t:'03:21',lane:4,txt:'김용현, 상황 해제 선포',s:'9권_5 p.35~36'},
+  {n:17,t:'04:20',lane:1,txt:'강호필 추가 작전지침',s:'9권_5 p.36'},
+  {n:18,t:'04:45',lane:3,txt:'전투참모단(-) 운영, 나머지 휴식',s:'11권_2-3 p.49'}],
+ fl:[['FIX','매핑표 6절 1번','2절의 시각 문구를 공소사실의 시각 서술과 대조해 교체'],
+     ['ORIG','매핑표 6절 5번','해제 의결 01:03 ↔ 01:01(강호필 국조 1.14, 색인 1권_2 p.18~19): 1권 원문 대조'],
+     ['OCR','매핑표 2절','박재열의 계엄 인지 시각(「22:40 정도」)은 OCR 불명']]},
+
+{ref:'7',part:'a',link:'⑤',lay:'ev',title:'02:30 사건의 원천은 합참 계엄과→2신속사 직통 라인이다',
+ items:[
+  {k:'g',t:'합참 계엄과 라인(이재식→권영환→정의현→한영철)에서 2신속사 201·203여단의 출동준비 관련 사항이 내려갔다.',s:'8권_2-2 p.29~30; 8권_2-3 p.26~29 !n; 11권_1-1 p.16~18 !n'},
+  {k:'g',t:'02:30 한영철(합참 대테러작전계획담당)이 오정태(2신속사 작전참모)에게 유선으로 출동준비 가능 여부를 묻고 출동준비를 요청했다.',s:'11권_1-2 p.26~27; 11권_2-1 p.7·13'},
+  {k:'x',t:'합참 라인 안에서 진술이 갈립니다. 한영철은 02:00~03:00경 문의했다고 진술하고, 권영환·이재식은 해제 의결 이후라고 진술합니다. 소요시간·가용병력 파악 요청 여부도 갈립니다(부록 C 10번).',s:'8권_2-3 p.26~29 !n; 11권_1-1 p.16~18 !n; 7권_1-2 p.14~17 !q'},
+  {k:'',t:'박재열과 직접 관련 없는 합참 라인이지만, 02:30 사건의 성격을 정하는 데 쓰입니다.'}],
+ fl:[['FIX','매핑표 6절 1번','02:30 사건이 공소사실에 어떻게 들어갔는지 대조'],
+     ['ORIG','매핑표 6절 14번','8권_2-3 p.26~29, 11권_1-1 p.16~18의 진술인 성명이 인용 쪽에서 확인되지 않음. 각 문서 첫 쪽 확인']]},
+
+{ref:'7A',part:'a',link:'①②③④',lay:'cards',cols:2,split:2,title:'특검의 혐의 기술(영장 기준)에는 네 가지 공백이 있다',
+ lead:'표제·본문·결론 문구의 불일치 / 인과 서술의 이중성 / 시간 서술의 어긋남 / 폭동과의 연결 부재. 강호필 영장과 군검사 질문 기준이며 박재열 공소사실이 아닙니다.',
+ cards:[
+  {h:'B 표제·본문·결론 문구가 서로 다르다',items:[
+   {t:'표제 「제2신속대응사단 출동준비 명령」 ↔ 본문 「신속대응사단은 의명 투입준비태세를 유지」',s:'9권_6 p.35'},
+   {t:'박재열 지시는 「임무 부여 시 즉각 투입될 수 있도록 준비」',s:'9권_6 p.36'},
+   {t:'결론부는 「…계엄군으로 동원하려고 시도」(핵심 단어 OCR 불명)',s:'9권_6 p.37'},
+   {k:'n',t:'투입 명령·이동 사실의 기재는 p.35~37에서 확인되지 않음',s:'9권_6 p.35~37'}]},
+  {h:'C 박재열 지시의 원인을 두 갈래로 서술한다',items:[
+   {t:'영장: 강호필이 중지 추가 지침을 하달하지 않았다. 「이에 따라」 박재열이 지시',s:'9권_6 p.36'},
+   {t:'군검사 질문: 「지작사령관의 지시도 있지 않았는데, 독자적으로」',s:'11권_2-3 p.37'},
+   {k:'g',t:'박서호: 「독단적으로 7군단장이 투입 준비 지시한 것으로는 보이지 않습니다」',s:'11권_2-1 p.29~30'}]},
+  {h:'D 시간·인과 서술이 맞물리지 않는다',items:[
+   {t:'의결 01:03경 → 법무실장 보고 「의결 직후」 → 추가 지침 미하달 → 「이에 따라」 박재열 01:00경~01:10경 지시',s:'9권_6 p.36'},
+   {t:'지시 시각(01:00경~01:10경)이 의결 시각(01:03경)과 겹침. 모두 「경」 단위',s:'9권_6 p.36'},
+   {k:'n',t:'박재열이 지작사로부터 무엇을 전달받았는지는 서술에 없음',s:'9권_6 p.36'}]},
+  {h:'E 부화수행 대상인 폭동과의 연결 서술이 없다',items:[
+   {t:'영장의 「구체적인 폭동행위」: 경찰의 국회 외곽 봉쇄 / 수방사 병력의 국회 진입 / 특전사 병력의 국회 진입 / 진입 병력의 의사당 내부 임무 실행',s:'9권_6 p.24~29'},
+   {k:'n',t:'이 부분에 7군단·2신속대응사단·박재열은 나오지 않음',s:'9권_6 p.24~29'},
+   {t:'강호필 변호인 의견서도 같은 취지로 지적',s:'9권_9 p.11 !i'}]}],
+ fl:[['FIX','매핑표 6절 1번 · 4절','영장(강호필 사건) 기준 모듈. 박재열 인지(7.23) 이전에 작성된 문서이므로, 공소장을 받으면 공소사실과 대조해 살리거나 삭제'],
+     ['LAW','매핑표 6절 18번','공소사실 불특정·석명 요구·공소기각 주장의 가능 여부와 실익은 문서에서 확인되지 않음. 변호인 판단'],
+     ['OCR','매핑표 6절 17번','9권_6 p.37 결론부의 OCR 불명 단어를 원본 이미지로 대조']]},
+
+{ref:'8',part:'b',link:'①',lay:'ev',title:'지작사 지시는 7군단만이 아니라 전 군단에 방송되었다',
+ items:[
+  {k:'g',t:'3군단 멀티톡 01:02 11항: 「신속대응사단은 의명 투입준비태세 유지」',s:'6권_1 p.31'},
+  {k:'g',t:'수도군단 일지 00:30: 「신속대응부대 즉각 의명 투입준비태세 유지」',s:'10권_9-3 p.52 !q'},
+  {k:'g',t:'1군단 일지는 「합참 대테러작전부대 투입 준비」와 「신속대응사단 투입 준비」를 모두 기재했다.',s:'10권_9-2 p.30 !q'},
+  {k:'g',t:'3군단장: 「11항목은 저희 군단과 관련이 없어서 … 기억에 없습니다」',s:'5권_1 p.12'}],
+ fl:[['ORIG','매핑표 성격 칸','각 군단 일지 원문은 이 문서 세트에서 미확인(질문문 인용)']]},
+
+{ref:'9',part:'b',link:'①',lay:'ev',title:'지시의 핵심어는 ‘의명’ — 명령이 내려오면 투입될 수 있게 준비 상태를 유지하라는 뜻이다',
+ items:[
+  {k:'g',t:'권대원(지작사 참모장): 「명령이 하달되면 즉각 투입 될 수 있도록 준비상태를 유지하는 의미」',s:'4권_2 p.22'},
+  {k:'g',t:'박재열, 김종연, 임태호가 같은 취지로 진술했다.',s:'11권_2-3 p.45; 11권_2-2 p.9; 11권_2-1 p.11'},
+  {k:'b',t:'같은 쪽에서 권대원은 「7군단은 그 지시를 받아, 준비를 해야 된다고 생각」한다고 말했습니다.',s:'4권_2 p.22'}],
+ fl:[['ORIG','매핑표 6절 13번','‘의명’의 통상적 군 용어 의미는 문서 밖 확인 필요(인터넷 검색 허용 범위)'],
+     ['OCR','매핑표 6절 17번','영장 표제·본문 문구 대조 시 9권_6 p.37 OCR 불명 단어 함께 확인']]},
+
+{ref:'10',part:'b',link:'①',lay:'ev',title:'‘신속대응(부대)’는 2신속사만이 아니라 대테러·오물풍선 대응 인력까지 포괄하는 말이었다',
+ items:[
+  {k:'g',t:'박재열: 2사단 안에서 대테러 지정부대에 혼란이 있었고, 오물풍선 대응 인력도 신속대응부대로 불렀으며, 5분대기조처럼 출동 준비를 했다.',s:'10권_9-2 p.30~32 !n'},
+  {k:'g',t:'임태호: 「상당히 잘못 알고 …」',s:'11권_2-1 p.11'},
+  {k:'g',t:'김종연: 합참 대테러부대와 연관 짓는 데 의문을 표했다.',s:'11권_2-2 p.11'},
+  {k:'g',t:'수도군단은 포괄적 범위로 기재했다.',s:'10권_9-3 p.52~53 !q'},
+  {k:'x',t:'임태호 p.11, 영장 p.35의 표현(‘신속대응사단’)과 표현 차이가 있습니다.',s:'11권_2-1 p.11; 9권_5 p.35'}],
+ fl:[['ORIG','매핑표 6절 13·14번','10권_9-2 진술인 성명(색인상 박재열 7.16) 확인. ‘신속대응’ 용어의 통상 의미 확인']]},
+
+{ref:'11',part:'b',link:'①④',lay:'ev',title:'지작사 내부에서도 지시 의도에 대한 이해가 갈렸다',
+ items:[
+  {k:'x',t:'김주훈은 계엄임무수행군 동원으로 이해했다(영장 서술).',s:'9권_5 p.35'},
+  {k:'g',t:'권대원: 「그 것은 말이 되지 않습니다 … 계엄임무수행군을 대통령이 지정해야 되는데, 그런 절차는 전혀 없었습니다」',s:'4권_2 p.22'},
+  {k:'n',t:'박재열에게 김주훈의 이해가 전달된 기록은 문서에서 확인되지 않음.',s:'9권_5 p.35'}],
+ fl:[['ORIG','매핑표 6절 7번','박재열이 00:42 통화·00:31 통화 내용을 알았는지는 문서에서 확인되지 않음. 미업로드 구간 확인']]},
+
+{ref:'12',part:'b',link:'②',lay:'ev',title:'01:00~01:10 지시의 직접 증거는 7군단 일지의 한 줄이다',
+ items:[
+  {k:'b',t:'일지 01:10 항: 「계엄군 임무수행을 할 수 있도록 준비해야하고, 2신속사는 임무부여시 즉각 투입될 수 있도록 준비」',s:'11권_2-4 p.3 !q; 6권_2 p.16 !q'},
+  {k:'n',t:'일지 원문(색인상 3권_7, 증거 57번 군사비밀 별도편철)은 이 문서 세트에서 미확인입니다.',s:'3권_7 p.1~8 !i'},
+  {k:'b',t:'다른 직접 진술이 있습니다. 임태호 8.4 「01경 군단 상황평가회의때 … 2신속대응사단 출동 준비를 잘 해라」(11권_2-1 p.13), 8.6 수사보고(11권_1-3 p.24). 진술의 신빙성은 부록 A 4·5번과 신문사항 문서에서 다룹니다.',s:'11권_2-1 p.13; 11권_1-3 p.24'}],
+ fl:[['ORIG','매핑표 6절 4번','7군단 종합상황일지 원문(증거 57번, 별도편철본) 열람']]},
+
+{ref:'13',part:'b',link:'②',lay:'ev',title:'일지는 명령지가 아니라 실무자가 요약해 쓴 기록이다',
+ items:[
+  {k:'g',t:'박재열: 「상황일지는 명령지가 아닙니다 … 실무자가 요약하여 작성」',s:'11권_2-3 p.37~38'},
+  {k:'b',t:'김종연: 작성자는 있는 그대로 작성하도록 평소 교육했고, 일지가 삭제된 것은 없는 것 같다. 다만 「계엄군 임무수행」 부분은 기억이 없다고 했습니다.',s:'11권_2-2 p.11'},
+  {k:'x',t:'임재순(색인상): ‘현 상황’ 항목은 이전 일지를 복사해 붙여 넣은 수준이고, 지시 항목은 회의 내용을 기록한 것이라고 했습니다.',s:'6권_2 p.13~16 !n'}],
+ fl:[['ORIG','매핑표 6절 4번','일지 원문 열람 후 항목별 작성 방식 대조']]},
+
+{ref:'14',part:'b',link:'②',lay:'ev',title:'「계엄군 임무수행」 문구를 기억하는 참석 참모가 없다',
+ items:[
+  {k:'g',t:'김종연: 「계엄군 임무수행을 할 수 있도록 준비하라는 문구는 … 기억이 나지 않습니다」',s:'11권_2-2 p.10~11'},
+  {k:'g',t:'박서호: 「계엄군 임무수행을 하라는 것은 기억나지 않습니다」',s:'11권_2-1 p.28'},
+  {k:'g',t:'임태호: 「계엄군 단어는 기억나지 않습니다」',s:'11권_2-1 p.10·13'},
+  {k:'x',t:'김종연은 「의명 임무부여시 즉각 투입될 수 있도록 준비하라」는 것은 군단장이 지시한 것 같다고 같은 쪽에서 진술했습니다.',s:'11권_2-2 p.10'},
+  {k:'b',t:'반대: 임재순은 「계엄군 임무를 수행할 수 있기 때문에 즉각 투입될 수 있도록 준비」 지시로 설명했습니다.',s:'6권_2 p.16 !n'}],
+ fl:[['ORIG','매핑표 6절 14번','6권_2 p.13~17 진술인 성명(색인상 임재순) 확인']]},
+
+{ref:'15',part:'b',link:'②',lay:'ev',dense:1,title:'지시를 이행한 흔적이 없다',
+ items:[
+  {k:'g',t:'2사단 부대활동 최초본에 01시 항목이 없다.',s:'11권_2-3 p.15·49'},
+  {k:'g',t:'오정태: 사단의 별도 지시가 없었고 2사단 지통실에 계엄 관련 문서가 없었다.',s:'11권_1-2 p.27~28'},
+  {k:'g',t:'오주열(p.33)·은명훈(p.39): 경계태세 2급 조치였을 뿐이다.',s:'11권_1-2 p.33·39'},
+  {k:'g',t:'임태호 4.6. 조서에는 01시 지시 언급이 없다.',s:'11권_1-2 p.17~20'},
+  {k:'g',t:'임재순: 「실무자들이 따로 확인한 건 없고」',s:'6권_2 p.17 !n'},
+  {k:'b',t:'반대: 임태호 8.4 「예하 부대에 준비 지시」(11권_2-1 p.13), 박서호 「출동준비를 했던 것은 맞는 것 같습니다」(11권_2-1 p.28)',s:'11권_2-1 p.13·28'}]},
+
+{ref:'16',part:'b',link:'②⑤',lay:'ev',title:'소요시간·가용병력 파악 등 출동 절차는 02:30 전후에야 시작됐다',
+ items:[
+  {k:'g',t:'박재열: 명령이었다면 가용병력·소요시간 보고가 있었을 텐데 일체 없었다.',s:'11권_2-3 p.27·37~38'},
+  {k:'g',t:'합참이 02:00~03:00경 새로 소요시간을 확인했다.',s:'8권_2-3 p.27 !q; 11권_1-1 p.17~18 !n'},
+  {k:'g',t:'임태호: 02:30 연락 당시 임무와 장소가 정해진 바 없었다.',s:'11권_2-1 p.13'},
+  {k:'x',t:'일부는 추론입니다. 합참이 새로 소요시간을 물은 것은 기록이고, 그 의미는 추론입니다.'}],
+ fl:[['INFER','매핑표 성격 칸','합참이 새로 소요시간을 물은 사실(기록)과 그 의미(추론)를 구분해 발표']]},
+
+{ref:'17',part:'b',link:'③',lay:'bar',title:'01:00~01:10 회의는 01:03 의결과 같은 시간대다 — 의결 후의 새 지시라는 증거는 일지 01:10 항뿐이다',
+ items:[
+  {k:'g',t:'영장은 지시를 「국회 의결에도 불구하고」 한 것으로 서술한다. 의결 시각은 01:03경으로 적혀 있다.',s:'9권_5 p.35; 11권_1-1 p.18 !q'},
+  {k:'g',t:'박재열: 해제 의결은 군단 상황평가회의가 끝난 직후에 인지한 것 같다.',s:'11권_2-3 p.39'},
+  {k:'n',t:'일지 항목의 발언 시각은 일지 원문이 없어 문서에서 확인되지 않음.'},
+  {k:'x',t:'양면입니다. 인지 시점에 대한 진술은 불리·유리 모두로 읽힙니다. 의결 시각은 01:01(강호필 국조 1.14 발언)로 적은 기록도 있습니다.',s:'1권_2 p.18~19 !i'}],
+ fl:[['ORIG','매핑표 6절 4·5번','일지 항목의 발언 시각 확인(일지 원문). 의결 시각 01:03 ↔ 01:01은 1권 원문 대조']]},
+
+{ref:'18',part:'b',link:'③',lay:'cards',cols:2,title:'특검 서술이 둘로 갈린다: 지작사의 미중지 「이에 따라」 vs 7군단장의 「독자적으로」',
+ cards:[
+  {n:'가',h:'영장: 강호필이 중지하라는 취지의 추가 지침을 하달하지 않았고, 「이에 따라」 박재열이 지시했다',s:'9권_5 p.35; 9권_6 p.36',hl:1},
+  {n:'나',h:'군검사 질문: 「지작사령관의 지시도 있지 않았는데, 독자적으로」 계엄군 임무를 수행할 수 있을 것 같아 지시했다',s:'11권_2-3 p.37',hl:1}],
+ items:[
+  {k:'n',t:'두 서술은 인과 구조가 서로 다릅니다. 어느 쪽이 공소사실인지는 공소장 원문으로 확인해야 하며, 문서에서 확인되지 않음.'},
+  {k:'g',t:'박서호: 「독단적으로 7군단장이 투입 준비 지시한 것으로는 보이지 않습니다」',s:'11권_2-1 p.29~30'},
+  {k:'b',t:'박재열 본인 진술은 (나) 쪽입니다. 7.16 「지작사령관 지시가 아니라 내 판단」, 8.10 「제가 생각해서 말한 내용」',s:'11권_2-3 p.23~26·36~37'}],
+ fl:[['FIX','매핑표 1절 메모','(가)·(나) 중 어느 쪽이 공소사실인지 공소장으로 확인(6절 1번의 영향 슬라이드 목록에는 없으나 1절 메모에 근거해 이 쪽에도 표시)']]},
+
+{ref:'19',part:'b',link:'③④',lay:'ev',title:'다른 군단장도 의결 사실을 인지하지 못한 채 계엄 관련 지시를 이어갔다',
+ items:[
+  {k:'g',t:'3군단장은 「국회 계엄 해제 의결을 인지하지 못했고」, 3군단은 01:12 포고령 교육·군경합동검문소 「즉각 의명 운용 준비」, 01:45~01:46 지자체 협조관 전개 등을 계속 지시했다(멀티톡 기재).',s:'5권_1 p.14~15'},
+  {k:'g',t:'53사단은 01:34 단편명령 24-12호(경계태세 2급 조치부호)를 하달하고 계엄상황실 개소 준비를 했다.',s:'9권_11-3 p.6'},
+  {k:'g',t:'5군단·36사단은 기관경고를 받았다(색인).',s:'9권_11-0 !i; 9권_11-1-3 !i; 9권_11-1-4 !i'}],
+ fl:[['ORIG','매핑표 6절 6번','5군단·36사단 기관경고(9권_11-0·11-1-3·11-1-4)는 색인. 원문 쪽 확인 후 인용 쪽수 기입']]},
+
+{ref:'20',part:'b',link:'③④',lay:'ev',title:'해제 의결 후 「계엄 관련 지시 금지」 취지가 7군단에 전달된 기록은 없다',
+ items:[
+  {k:'b',t:'해제 의결 직후 지작사 법무실장이 강호필에게 「계엄과 관련된 지시도 하면 안 된다」는 취지로 보고했다(영장 서술).',s:'9권_5 p.35; 11권_1-1 p.18'},
+  {k:'n',t:'이 보고가 7군단에 전달되었다는 기록은 문서에서 확인되지 않음.'}],
+ fl:[['ORIG','매핑표 6절 8번','7군단 전달 여부는 문서에서 확인되지 않음. 미업로드 기록 구간 확인']]},
+
+{ref:'21',part:'b',link:'④',lay:'ev',title:'박재열의 ‘국회 장면’ 인식은 TV로 본 국회 진입 부대에 관한 인식이다(문맥 재확인 필요)',
+ items:[
+  {k:'b',t:'박재열: 「국회를 장악하려는 임무를 받은 것 같다고 생각했습니다」',s:'11권_2-3 p.31'},
+  {k:'g',t:'문맥상 TV로 본 국회 진입 부대에 관한 생각으로 읽힙니다. 7군단은 계엄 임무가 없었습니다.',s:'11권_2-3 p.27·29~31'},
+  {k:'n',t:'7군단 또는 자신의 임무로 인식했다는 진술은 확인되지 않음.'}],
+ fl:[['ORIG','매핑표 6절 11번','8.10 조서 p.29~31 ‘국회 장악’ 진술의 정확한 문맥을 원문으로 재독']]},
+
+{ref:'22',part:'b',link:'④',lay:'ev',title:'「계엄군 임무 수행도 가능하겠다」는 생각은 준비 가능성에 대한 생각이다(법리 확인 필요)',
+ items:[
+  {k:'b',t:'박재열: 「그런 상황이 된다면 계엄군으로서 임무 수행도 가능하겠다는 생각이 들어서… 국회에 진입한 계엄군의 모습이 TV에 나오고 있는 상황」',s:'11권_2-3 p.36~37'},
+  {k:'g',t:'생각의 내용은 준비 가능성이고, 지시는 ‘의명’을 전제로 했습니다. 7군단은 계엄 임무가 없었고 이행 흔적도 없습니다.',s:'11권_2-3 p.27·37·45; 9권_5 p.35; 11권_1-2 p.27·33·39'},
+  {k:'n',t:'부화수행의 구성요건·고의·목적 인식 기준(법리)은 문서에서 확인되지 않음. 한영철 의견서(11권_1-2 p.1)는 당사자 의견입니다.',s:'11권_1-2 p.1'}],
+ fl:[['LAW','매핑표 6절 2번','부화수행의 구성요건, 고의, 국헌문란 목적 인식 기준(법리)을 변호인이 확인']]},
+
+{ref:'23',part:'b',link:'④',lay:'steps',title:'박재열 진술의 변천과 일관된 부분',
+ steps:[
+  {t:'6.12',h:'1회 참고인 조사',x:'지작사 회의 내용을 군단회의에서 공유했다',s:'11권_2-3 p.23~26'},
+  {t:'7.16',h:'2회 참고인 조사',x:'「계엄군 임무 수행」 문구는 지작사령관 지시가 아니라 내 판단이다',s:'11권_2-3 p.23~26; 10권_9-2 p.29~32 !n'},
+  {t:'7.17',h:'추가의견서',x:'박재열이 혼자 작성해 제출',s:'10권_10-1 !x'},
+  {t:'8.10',h:'피의자신문',x:'「공유한 차원」이라고 진술',s:'11권_2-3 p.36~37·45'}],
+ items:[
+  {k:'g',t:'일관된 부분: ‘의명’은 명령이 내려오면 그때부터 준비한다는 뜻이고, 02:30 이후에는 중지했다.',s:'11권_2-3 p.45'},
+  {k:'b',t:'변천 자체는 불리합니다. 변천의 이유는 의뢰인에게 확인해야 합니다.'}],
+ fl:[['ORIG','매핑표 6절 3번','6.12 참고인 조서 원문(증거 91번 1682쪽)은 이 Project에 없음. 8.10 피신(11권_2-3 p.23~26)의 인용으로만 확인'],
+     ['ORIG','매핑표 부록 A 3번','7.17 의견서 10권_10-1은 검색 발췌']]},
+
+{ref:'24',part:'b',link:'⑤',lay:'steps',dense:1,title:'02:30 이후 박재열은 즉시 확인하고 중지했다',
+ steps:[
+  {t:'02:30',h:'합참→2신속사',x:'유선 출동준비 문의',k:'g',s:'11권_2-3 p.5·15·49'},
+  {t:'02:39',h:'사단장→군단장',x:'보고(02:40 기재도 있음)',k:'x',s:'11권_2-3 p.49·50'},
+  {t:'02:42',h:'군단장→지작사',x:'참모장(→사령관) 보고',k:'g',s:'11권_2-3 p.4·50'},
+  {t:'02:53',h:'군단장→사단장',x:'지시 전달(최초본·수정본 내용 다름)',k:'x',s:'11권_2-3 p.49·50'},
+  {t:'02:57~58',h:'2신속사',x:'중지 보고',k:'g',s:'11권_2-3 p.49; 11권_2-1 p.14'},
+  {t:'03:00경',h:'2신속사 예하',x:'전파: 병력 취침',k:'g',s:'11권_1-2 p.20·40'}],
+ items:[
+  {k:'g',t:'박재열: 02:39 이후 「대기해라. 내가 지작사에 확인하겠다」',s:'11권_2-3 p.40'},
+  {k:'g',t:'권대원: 7군단장에게 「움직이지 말라」고 전달했다.',s:'11권_2-3 p.4'},
+  {k:'g',t:'2사단 최초본 02:53·02:58, 임태호, 은명훈의 진술이 이어진다.',s:'11권_2-3 p.49; 11권_2-1 p.14; 11권_1-2 p.40'},
+  {k:'g',t:'김종연: 군단장이 참모들에게 출동명령이 내려온 것이 있는지 묻고 지작사 참모장과 통화한 뒤 주둔지 경계태세 강화·위병소 통제를 지시했다.',s:'11권_2-2 p.6~7'},
+  {k:'x',t:'중지 주체와 시각은 기록마다 다릅니다. {{27}}에서 비교합니다(부록 C 7번).'}],
+ fl:[['ORIG','매핑표 6절 12번','이승오(지작사 작전본부장) 진술은 이 Project에 없음. 02:45~02:51 통화 내용 확인']]},
+
+{ref:'25',part:'b',link:'⑤',lay:'ev',title:'국회 답변은 작전처장 전결 문건이며 박재열의 지침·삭제 지시는 확인되지 않는다',
+ items:[
+  {k:'g',t:'국회 요구자료 답변은 작전처장 전결 문건이다.',s:'11권_2-4 p.6·10'},
+  {k:'g',t:'박재열의 지침·삭제 지시는 확인되지 않는다. 답변의 02:30~02:53 서술은 2사단 수정본과 일치한다.',s:'11권_2-3 p.46·50; 11권_2-1 p.29~30'},
+  {k:'g',t:'성은경 보고: 박서호가 상황일지의 「2신속대응사단」 삭제 가능 여부를 문의했고, 법무실장이 만류했으며, 국회에는 「그런 적 없다」는 답변이 이미 나간 상태였다.',s:'11권_1-2 p.44~46 !i'},
+  {k:'n',t:'답변의 「군단장 검토 문건」의 의미는 문서에서 확인되지 않음.'},
+  {k:'b',t:'특검 8.12 수사보고: 일지 01:00~01:10과 답변의 불일치로 답변이 「허위 작성되었을 가능성을 배제할 수 없음」',s:'11권_2-4 p.4~5'}],
+ fl:[['ORIG','매핑표 6절 9·10번','국회 요구자료 답변의 최초 제출 시점·최초본 내용, 「군단장 검토 문건으로 작전처장 전결」의 의미 확인']]},
+
+{ref:'26',part:'b',link:'⑤',lay:'ev',title:'지작사 수정본·‘스탠스’ 논란에서 박재열 관여를 말하는 것은 임태호 진술뿐이다',
+ items:[
+  {k:'b',t:'임태호: 「이 스탠스로 가자」. 지작사 중지 지시로 수정본이 바뀌었고 강호필이 「내가 중지시켰다」고 했다.',s:'11권_2-1 p.12'},
+  {k:'g',t:'박재열: 수정본 내용이 맞다고 권대원에게 들었고, 「스탠스」 발언은 전혀 사실이 아니다. 강호필의 「내가 중단시킨 거다」를 들은 적이 없다.',s:'11권_2-3 p.41~42'},
+  {k:'g',t:'권대원: 「수정이라고 생각하지 않는다」',s:'11권_2-3 p.8·13'},
+  {k:'b',t:'임태호 제출 메일에는 수정본을 7군단장이 국방메일로 직접 송부한 것으로 적혀 있습니다.',s:'11권_1-3 p.28 !x'},
+  {k:'n',t:'수정본 작성·수정에 박재열이 관여했다는 증거는 확인한 범위에서 확인되지 않음.'}],
+ fl:[['ORIG','매핑표 성격 칸','11권_1-3 p.28은 검색 발췌. 원문 쪽 열람']]},
+
+{ref:'27',part:'c',link:'⑤',lay:'cards',cols:4,dense:1,title:'‘중지’를 둘러싼 서술이 사람마다 다르다: 강호필·권대원·임태호·박재열',
+ cards:[
+  {h:'강호필',items:[
+   {t:'임태호 진술 중: 「내가 중지시켰다」',s:'11권_2-1 p.12; 11권_1-3 p.23~24'},
+   {t:'피신 진술',s:'7권_7-2 p.4~7 !x'},
+   {t:'변호인 의견서: 02:50',s:'9권_9 !i'}]},
+  {h:'권대원',items:[
+   {t:'「02:52에 이미 지시」',s:'11권_2-3 p.13'},
+   {t:'수정본은 「수정이라고 생각하지 않는다」',s:'11권_2-3 p.8'}]},
+  {h:'임태호',items:[
+   {t:'p.9: 군단장이 합참 확인 결과 「출동준비를 중지하라」 지시',s:'11권_2-1 p.9'},
+   {t:'p.12: 「지작사령관, 7군단장이 … 중지 지시를 한 것을 들은 적도 없고, 그런 적도 없습니다」',s:'11권_2-1 p.12'},
+   {t:'p.14: 자신이 「출동준비 하는 것을 중지하겠습니다」 보고',s:'11권_2-1 p.14'}]},
+  {h:'박재열',items:[
+   {t:'「출동준비 중지는 제가 이미 지시 … 저에게 중지를 건의하지 않았다」',s:'11권_2-3 p.44~45'},
+   {t:'강호필의 「내가 중단시킨 거다」는 들은 적 없음',s:'11권_2-3 p.42'}]}],
+ items:[
+  {k:'x',t:'합참의장 김명수는 02:19~02:22 통화에서 「강호필에게 병력을 움직이면 안된다고 했다」고 진술했습니다(정리표 인용).',s:'7권_6 p.23'},
+  {k:'x',t:'박서호·김종연은 중지 지시를 기억하지 못하고 「생활관에서 휴식 대기」「다 재워라」를 기억합니다. 시각은 02:52(수정본·7군단 답변·권대원)와 02:50(강호필 변호인)이 갈립니다.',s:'11권_2-1 p.25~26; 11권_2-2 p.12'}],
+ fl:[['ORIG','매핑표 6절 6·12번','강호필 피신 7권_7-2 p.4~7은 검색 발췌, 변호인 의견서 9권_9는 색인, 이승오 진술은 이 Project에 없음']]},
+
+{ref:'28',part:'c',link:'①③',lay:'ev',title:'맥락 비교: 타 군단·사단·타군에서도 같은 지침과 조치가 있었다',
+ items:[
+  {k:'g',t:'육군 안에서의 비교는 {{8}}(전 군단 방송)과 {{19}}(다른 군단장의 의결 미인지)를 참조합니다.'},
+  {k:'g',t:'해작사 일지 00:00~00:05: 합참 「신속대응부대 투입 준비」, 해작사 「신속대응부대 즉각투입 준비」',s:'9권_10 p.2'},
+  {k:'',t:'비교 대상은 육군 지작사와 다른 군(해군 작전사령부)의 기록입니다.'}]},
+
+{ref:'29',part:'c',link:'①~⑤',lay:'sum',title:'결론: 박재열은 ‘계엄군 임무’에 참여한 바 없고 이를 인식·목적으로 한 바도 없다',
+ rows:[
+  ['①','지작사 지시','핵심어는 ‘의명’이고 지시는 전 군단에 방송되었으며 7군단에는 계엄 임무가 없었다','{{4,8,9,10}}'],
+  ['②','박재열의 지시','직접 증거는 일지 한 줄이고, 일지는 요약 기록이며, 문구를 기억하는 참모가 없고, 이행 흔적이 없다','{{12-16}}'],
+  ['③','해제 의결 이후 지속','같은 시간대에 이루어진 회의이고, 특검 서술이 둘로 갈리며, 7군단에 전달된 기록이 없다','{{17-20}}'],
+  ['④','인식과 목적','‘국회 장면’은 TV로 본 부대에 관한 인식이고, 생각의 내용은 준비 가능성이다','{{21-23}}'],
+  ['⑤','사후 정황','02:30 이후 즉시 확인하고 중지했으며, 국회 답변은 작전처장 전결이고, 관여를 말하는 것은 임태호뿐이다','{{24-27}}']],
+ fl:[['FIX','매핑표 6절 1번','결론 문장을 공소사실 문구에 맞춰 교체. 위 다섯 줄은 슬라이드 종합이므로 공소장 확보 후 해당 슬라이드 수정 내용을 반영']]},
+
+{ref:'30',part:'c',link:'②④⑤',lay:'ladder',title:'예비적 주장: 설령 01:10 지시가 있었더라도 ‘의명 대기’였고 실행이 없었으며 02:30~03:00 사이 중지됐다. 가능성 인식만으로 국헌문란 목적 인식이 증명되지는 않는다',
+ rungs:[
+  ['1','설령 01:10 지시가 있었더라도 ‘의명 대기’ 수준이었다','{{9}}'],
+  ['2','지시를 이행한 흔적이 없다','{{15}}'],
+  ['3','02:30~03:00 사이에 중지됐다','{{24}}'],
+  ['4','가능성에 대한 인식만으로는 국헌문란 목적의 인식이 증명되지 않는다','{{22}}',1]],
+ fl:[['HOLD','2026.10.21 결정','일단 포함, 법리 확인 후 확정'],
+     ['FIX','매핑표 6절 1번','공소사실과 대조해 주장 구성을 확정'],
+     ['LAW','매핑표 6절 2·18번','4단계(가능성 인식과 목적 인식)의 법리는 문서에서 확인되지 않음. 변호인 판단']]}
+];
+/* ===== 부록 데이터 (매핑표 부록 A=불리한 자료, 2절=시간선, 5절=상충 기록) ===== */
+const APP={
+A:{lab:'부록 A',title:'부록 A. 불리한 자료와 대응',lead:'본편 슬라이드에서는 빼고 부록으로 두는 불리한 자료입니다. 반론·질의 대비용입니다.',
+ cols:['번호','불리한 자료(요지)','출처','대응 논점','대응 근거','대조'],w:[40,260,110,350,230,178],
+ rows:[
+ {c:['1','박재열: 「그런 상황이 된다면 계엄군으로서 임무 수행도 가능하겠다는 생각이 들어서… 국회에 진입한 계엄군의 모습이 TV에 나오고 있는 상황」','11권_2-3 p.36~37','생각의 내용은 준비 가능성이고 지시는 ‘의명’을 전제함. 7군단은 계엄 임무가 없음. 이행 흔적이 없음. 특검 서술의 ‘독자적으로’ 갈래(나)는 지작사 지시와 무관한 개인 판단이라 ‘이에 따라’ 갈래(가)와 모순','11권_2-3 p.27·37·45; 9권_5 p.35; 11권_1-2 p.27·33·39','확인(법리 ✕)'],f:[['LAW','매핑표 6절 2번','부화수행 법리 확인']]},
+ {c:['2','박재열: 「국회를 장악하려는 임무를 받은 것 같다고 생각했습니다」','11권_2-3 p.31','문맥상 TV로 본 국회 진입 부대에 관한 생각으로 읽힘(문맥 재확인 필요). 7군단 또는 자신의 임무로 인식했다는 진술은 확인되지 않음','11권_2-3 p.27·29~31','확인(문맥 재확인 필요)'],f:[['ORIG','매핑표 6절 11번','8.10 조서 p.29~31 문맥 재독']]},
+ {c:['3','진술 변천: 1회(6.12) 지작사 회의 내용을 군단회의에서 공유 → 2회(7.16) 「계엄군 임무 수행」 문구는 지작사령관 지시가 아니라 내 판단 → 7.17 의견서 → 8.10 「공유한 차원」','11권_2-3 p.23~26·45; 10권_9-2 p.29~32','변하지 않은 핵심(‘의명’은 명령이 내려오면 그때부터 준비, 02:30 이후 중지)을 앞세움. 변천의 이유는 의뢰인 확인 필요','11권_2-3 p.45; 10권_10-1(검색 발췌, 7.17 의견서)','확인'],f:[['ORIG','매핑표 6절 3번','6.12 참고인 조서 원문은 이 Project에 없음. 10권_10-1은 검색 발췌']]},
+ {c:['4','임태호 8.4: 「현 상황에서 출동가능성이 가장 높은 부대는 2신속대응사단이니 … 출동 준비하라는 지시한 것이 기억이 납니다」','11권_2-1 p.9','임태호 진술의 변천·모순: 4.6. 조서에 01시 지시 언급 없음, p.8 「경계태세 2급에 맞게」, p.10 「계엄군 단어는 기억나지 않습니다」, 중지 주체가 p.9·p.12·p.14에서 서로 다름. 박재열은 「사실과 다릅니다」','11권_1-2 p.17~20; 11권_2-1 p.8·10·12·14; 11권_2-3 p.45','확인(신문사항 문서와 연결)']},
+ {c:['5','임태호 8.4: 「01경 군단 상황평가회의때 … 2신속대응사단 출동 준비를 잘 해라… 그래서 저는 예하 부대에 준비 지시를 했습니다」','11권_2-1 p.13','같은 쪽 「계엄군이라는 단어와 계엄군 활용에 대해서는 생각하지 않았습니다」. 여단장들은 사단의 별도 지시가 없었다고 진술','11권_2-1 p.13; 11권_1-2 p.27·33·39','확인 ※']},
+ {c:['6','박서호: 「계엄군 임무에 투입될 수 있다는 것으로 생각했던 거 같습니다」「2신속사단에 출동준비를 했던 것은 맞는 것 같습니다」','11권_2-1 p.28','같은 진술에서 「계엄군 임무수행을 하라는 것은 기억나지 않습니다」「지작사 지침을 그대로 받아서 전파」「독단적으로 7군단장이 투입 준비 지시한 것으로는 보이지 않습니다」. 추정 표현','11권_2-1 p.28~30','확인']},
+ {c:['7','7군단 상황일지 작성자: 지작사 지시를 방송으로 청취, 군단장 「알겠다」, 군단장이 2신속사단장에게 「계엄군 임무를 수행할 수 있기 때문에 즉각 투입될 수 있도록 준비」 지시한 내용을 기록','6권_2 p.15~17','같은 진술 「정확하게 잘 기억은 안나는데…알고 있습니다」(p.17), 「실무자들이 따로 확인한 건 없고」. ‘알겠다’는 상급 지시를 수령했다는 표시','6권_2 p.15~17','확인(진술인 성명은 인용 쪽에서 확인되지 않음. 색인상 임재순이고 11권_2-4 p.4 각주에 6.16. 임재순 진술 수사보고가 기재됨. 6권_2는 p.13~17만 열람)'],f:[['ORIG','매핑표 6절 14번','6권_2 p.13~17 진술인 성명 확인']]},
+ {c:['8','권대원: 「7군단은 그 지시를 받아, 준비를 해야 된다고 생각합니다」','4권_2 p.22','일반 절차에 관한 의견이고 ‘의명 준비상태 유지’를 전제로 한 답변. 같은 진술인이 「계엄군 투입 의도는 말이 되지 않는다」고 함','4권_2 p.22','확인']},
+ {c:['9','3군단장: 「지작사 작전참모부에서 7군단으로 전파를 하고, 7군단에서 신속대응사단으로 전파하는 그런 절차를 거칠 거라고 생각합니다」','5권_1 p.13','일반 절차에 관한 추정. 같은 진술인이 11항은 자기 군단과 무관해 기억에 없다고 하고(p.12) 해제 의결을 인지하지 못했다고 함(p.14~15)','5권_1 p.12~15','확인']},
+ {c:['10','7.17 추가의견서 전달: 박재열이 「너랑 11사단장은 부를거야… 잘 보고 참고해라」 → 임태호는 유리하게 진술해 달라는 취지로 받아들임','11권_2-1 p.15','박재열은 의견서를 혼자 작성(11권_2-3 p.46). 참모장 김종연에게도 전달(11권_2-2 p.15~16). 임태호 8.4 진술에는 의견서와 다른 불리한 내용이 포함됨(추론)','11권_2-3 p.46; 11권_2-2 p.15~16; 11권_2-1 p.9·13','확인 ▲ 추론 포함']},
+ {c:['11','7군단 일지 01:00~01:10과 국회 요구자료 답변의 불일치 → 허위 작성 의심(특검 8.12 수사보고)','11권_2-4 p.2~5','답변은 작전처장 전결 문건. 박재열의 지침·삭제 지시 없음. 법무실장 만류. 답변의 02:30~02:53 서술은 2사단 수정본과 일치(최초본과는 시각·내용 차이, 부록 C 참조)','11권_2-4 p.6·10; 11권_2-3 p.46·50; 11권_1-2 p.44~46','확인 ✕']},
+ {c:['12','임태호 「이 스탠스로 가자」, 박재열이 합참 장군 통화 확인 시도를 「그만하라」 했다는 진술','11권_2-1 p.12; 11권_2-3 p.12','박재열 전면 부인(p.41~42). 권대원 「수정이라고 생각하지 않는다」(p.8). 임태호 단독 진술','11권_2-3 p.8·41~42','확인 ※']},
+ {c:['13','임태호: 02:39 군단장 「그럼 뭘 도와 줄까, 차량을 지원해줘야 되나」, 02:50경 「해프닝인거 같은데」','11권_2-1 p.14','박재열: 정확한 기억 없음, 상급자로서 할 수 있는 말이라 생각하나 도와주려고 한 것은 아님, 「해프닝」은 기억 없음. 같은 쪽에서 「나도 지작사에 확인해볼게」 후 중지','11권_2-3 p.43~44; 11권_2-1 p.14','확인 ※']},
+ {c:['14','임태호 제출 메일: 지작사 수정본을 7군단장이 국방메일로 직접 송부','11권_1-3 p.28','박재열은 수정본 내용이 맞다고 권대원에게 들었다고 진술(11권_2-3 p.41). 수정본 작성·수정에 관여했다는 증거는 확인한 범위(11권_2-3, 11권_2-1, 11권_1-3 p.22~30 발췌)에서 확인되지 않음','11권_2-3 p.41; 11권_1-3 p.28','▲ (11권_1-3은 검색 발췌)'],f:[['ORIG','매핑표 부록 A 14번','11권_1-3 p.28은 검색 발췌. 원문 쪽 열람']]},
+ {c:['15','2신속사는 평시 7군단 통제 아래 있어 박재열이 지시할 수 있는 위치였다','11권_2-1 p.5~6','지시할 수 있는 위치와 실제 지시는 구별. 실제 지시는 ‘의명’ 전제, 7군단은 계엄 임무 없음','11권_2-1 p.5~6·22; 11권_2-3 p.27','확인']}
+ ]},
+B:{lab:'부록 B',title:'부록 B. 기준 시간선 상세',lead:'조직별 기준 시간선입니다(12.3 22:40 ~ 12.4 04:45, 이하 날짜 표시가 없는 시각은 12.4). 6번 슬라이드의 번호 눈금은 이 표에서 골랐습니다.',
+ cols:['시각','조직','행위·내용','출처','성격·대조'],w:[96,118,520,240,194],
+ rows:[
+ {c:['12.3 22:40','합참','전군 경계태세 2급 발령(단편명령 24-43호)','9권_10 p.22; 11권_2-3 p.15·49; 11권_2-1 p.7','중립']},
+ {c:['12.3 22:40경 이후','7군단','박재열: 공관 취침 중 지통실장 안보폰 전화로 계엄 인지, 지통실 입실(「22:40 정도」는 OCR 불명)','11권_2-3 p.28·31','본인 진술 ※ OCR'],f:[['OCR','매핑표 2절','「22:40 정도」 OCR 불명. 원본 이미지 대조']]},
+ {c:['12.3 23:07~23:40','2신속사','위기조치반 소집 지시(23:07), 사단장 정위치(23:28), 영외거주자 소집 지시(23:40, 완료 12.4 02:50)','11권_2-3 p.15·49','중립']},
+ {c:['12.3 23:18','지작사→각 군단','지작사령관 지시사항 하달(영장 서술): 지역계엄사령부 설치, 제1지구계엄사령부는 별도 화상망. 개소를 보고한 군단은 2·1·3·수도·5군단이고 7군단은 그 목록에 없음','9권_5 p.33~34; 6권_1 p.28~29','7군단 부재 ◎']},
+ {c:['00:07','지작사','강호필이 TV 뉴스로 특전사 등의 국회 투입을 확인(영장 서술)','9권_5 p.32','박재열 무관']},
+ {c:['00:09','지작사↔계엄사령부','강호필이 박안수에게 전화해 지휘소 개소 중간보고, 지구계엄사 창설 지시를 받음(안보폰 통화내역 00:09경 1분 49초)','9권_5 p.33; 10권_9-3 p.51','박재열 무관']},
+ {c:['00:31','국방부장관→계엄사령관','김용현이 박안수에게 「국회에 경력과 병력 집중」 지시, 박안수가 투입 가능 부대로 2신속사 언급(영장 서술)','9권_5 p.34~35','특검 서사의 출발점, 박재열 무관']},
+ {c:['00:31~01:03','지작사','지작사-군단 상황평가회의(3차) 주관','9권_5 p.33','중립']},
+ {c:['00:42','지작사','강호필이 김용현 통화 직후 김주훈에게 2신속사 투입 가능 여부 확인, 김주훈은 계엄임무수행군 동원으로 보고 「제한된다」 답변(영장 서술). 박재열이 이를 알았다는 기록은 문서에서 확인되지 않음. 7권_6 p.22(시간대별 정리표)는 시각을 00:43경으로 기재','9권_5 p.35; 7권_6 p.22','✕']},
+ {c:['00:40~00:55','지작사→군단장들','강호필 주요 지시·강조사항. 영장은 「신속대응사단은 의명 투입준비태세 유지」. 기록별로 7군단 일지 00:55 「합참 대테러부대 출동태세 유지(의명, 2신속대응사단)」, 3군단 멀티톡 01:02 11항, 수도군단 일지 00:30(1차 평가), 1군단 일지가 각기 다르게 적음. 7권_6 p.22(시간대별 정리표)는 3군단 멀티톡·수도군단 일지를 근거로 지작사령관 주요 지시를 00:36~00:44, 예하 군단장·사단장 계엄상황실 개소 보고를 00:47~00:55로 정리','9권_5 p.35; 10권_9-2 p.29~30; 6권_1 p.31; 10권_9-3 p.52; 7권_6 p.22','※ 시각·문구 · 일지 원문은 색인'],f:[['ORIG','매핑표 6절 4번','일지 원문 열람']]},
+ {c:['00:55경','7군단','박재열 진술: 00:40 회의는 기억이 불명확하고 강호필의 「지금 현재 대단히 조심해야 하는 상황」만 기억, 「신속대응사단이 의명 출동준비」 취지만 기억','11권_2-3 p.31~33·35~36','본인 진술']},
+ {c:['01:00~01:10','7군단','군단장 주관 군단-사단 상황평가회의. 일지 01:10 항: 「계엄군 임무수행을 할 수 있도록 준비해야하고, 2신속사는 임무부여시 즉각 투입될 수 있도록 준비」','9권_5 p.35; 11권_2-3 p.33·36; 11권_2-4 p.3; 6권_2 p.16','▲ 핵심 불리 ※ · 일지 원문은 색인'],f:[['ORIG','매핑표 6절 4번','일지 원문(증거 57번) 열람']]},
+ {c:['01:03','국회','해제요구 결의안 의결. 지작사 법무실장이 직후 강호필에게 「계엄과 관련된 지시도 하면 안 된다」 취지로 보고(영장 서술)','9권_5 p.35; 11권_1-1 p.18','※ 01:01(색인)'],f:[['ORIG','매핑표 6절 5번','01:01(강호필 국조 1.14, 색인 1권_2 p.18~19)과 상충: 1권 원문 대조']]},
+ {c:['01:12~01:46','3군단','3군단장이 01:12 포고령 교육·군경합동검문소 「즉각 의명 운용 준비」, 01:45~01:46 지자체 협조관 전개 등을 계속 지시(멀티톡 기재). 3군단장: 「국회 계엄 해제 의결을 인지하지 못했고」','5권_1 p.14~15','비교 ◎']},
+ {c:['01:34','53사단','사단 단편명령 24-12호(경계태세 2급 조치부호) 하달, 계엄상황실 개소 준비 실시','9권_11-3 p.6','비교']},
+ {c:['시각 미상~02:30 전','합참 계엄과','이재식→권영환→(정의현→)한영철: 2신속사 201·203여단 출동준비 관련 하달. 한영철은 02:00~03:00경 문의했다고 진술, 권영환·이재식은 의결 이후로 진술. 소요시간·가용병력 파악 요청 여부는 진술이 갈림','8권_2-2 p.29~30; 8권_2-3 p.26~29; 11권_1-1 p.16~18','박재열 무관 ※']},
+ {c:['02:15','합참→2신속사','한영철이 오정태에게 전화해 예하 부대 위치 문의(오정태 검찰 진술을 인용한 질문문)','8권_2-3 p.28','박재열 무관']},
+ {c:['02:17~02:22','지작사↔합참','강호필의 주성운 통화(02:17 발신 54초, 주성운은 통화한 기억이 없다고 진술), 김명수 합참의장 통화(02:19~02:22). 김명수는 「강호필에게 병력을 움직이면 안된다고 했다」고 진술. 2신속사에 계엄사 연락이 가기(02:30) 전의 통화','7권_6 p.23','박재열 무관(통화 당사자로 기재되지 않음). 시간대별 정리표 인용, 작성 주체는 인용 쪽에서 확인되지 않음']},
+ {c:['02:30','합참 계엄상황실→2신속사','한영철(합참 대테러작전계획담당)이 오정태(2신속사 작전참모)에게 유선으로 201·203여단 출동준비 가능 여부 문의 및 출동준비 요청. 7군단 경유 여부는 부록 C 5번','11권_2-3 p.5·15·49; 11권_2-1 p.7·13; 11권_1-2 p.18·26','2신속사 직통']},
+ {c:['02:39(02:40)','2신속사→7군단','사단장→군단장 지휘보고. 2사단 최초본·임태호 p.14는 02:39, 수정본·7군단 답변·임태호 p.8은 02:40','11권_2-3 p.49·50; 11권_2-1 p.8·14; 11권_2-4 p.2','※ 시각']},
+ {c:['02:39 이후','7군단','박재열: 「대기해라. 내가 지작사에 확인하겠다」. 임태호는 「그럼 뭘 도와줄까, 차량 지원」「해프닝」 발언도 진술하나 박재열은 기억 없음','11권_2-3 p.40·43~44; 11권_2-1 p.14','▲ ※']},
+ {c:['02:42','7군단→지작사','군단장→지작사 참모장(→사령관) 보고. 권대원 진술은 박재열의 전화로 시작','11권_2-3 p.4·50; 11권_2-4 p.2','◎']},
+ {c:['02:42~02:52','지작사','강호필이 작전본부장(이승오)에게 확인. 안보폰 통화내역: 02:45:42 지작사령관→작전본부장(종료 02:47:36), 02:51:13 작전본부장→지작사령관(종료시각 OCR 불명)','11권_2-3 p.4·50; 10권_9-3 p.51','◎']},
+ {c:['02:52','지작사령관','「201·203여단의 출동준비를 일체 하지 않도록」 지시(2사단 수정본·7군단 답변). 강호필 변호인은 02:50로 기재(색인)','11권_2-3 p.16·50; 11권_2-4 p.2','※ 확인/색인'],f:[['ORIG','매핑표 6절 6번','강호필 변호인 의견서 9권_9(02:50)는 색인']]},
+ {c:['02:53','7군단→2신속사','군단장→사단장. 최초본은 「지작사 참모장 확인결과 합참에서 출동준비 요청 없었음」 공유, 수정본·7군단 답변은 「출동준비를 일체 하지 않도록」 지시','11권_2-3 p.49·50; 11권_2-4 p.2','※ 내용']},
+ {c:['02:57~02:58','2신속사','사단장↔육본 정책실장 통화(「병력이 필요없어요, 휴식 취하세요」, 최초본은 「현 상태에서 출동준비 활동 중지」). 사단장→군단장 보고 02:58(최초본 「군단장 지시사항 접수: 출동준비 관련 활동 중지」)','11권_2-3 p.49; 11권_2-1 p.8·14','※ 02:57/02:58']},
+ {c:['02:58경','7군단','박재열: 「차라리 그냥 애들 재워라」(본인). 김종연: 「다 재워라」 정도 발언, 시각은 기억 불명(p.12). 김종연은 p.7에서 「04경 쯤」 군단장의 군단 전체 취침 지시도 기억','11권_2-3 p.40; 11권_2-2 p.7·12','본인·참모 진술']},
+ {c:['03:00경','2신속사 예하','사단장 지시 전파(출동준비 중지·병력 취침). 은명훈: 「군단에서 출동하지 않도록 다 조치가 되었으니 … 모든 임무를 중지하고 다 재워라」','11권_2-3 p.49; 11권_1-2 p.20·40','◎']},
+ {c:['03:21','국방부장관','김용현이 상황 해제 선포(영장 서술)','9권_5 p.35~36','중립']},
+ {c:['04:20','지작사','강호필 추가 작전지침','9권_5 p.36','중립']},
+ {c:['04:45','2신속사','전투참모단(-) 운영, 기타 인원 휴식','11권_2-3 p.49','중립']},
+ {c:['사후(시각 ✕)','7군단','국회 국방위 김병주·복지위 백혜련 의원 요구자료 답변 수정 제출: 「02:30경 계엄사 한00 중령으로부터 … 출동준비 요청을 받은 사항」, 「출동한 사실이 없으며 출동준비를 한 사항이 없음」. 작전처장 전결. 최초 제출 시점은 문서에서 확인되지 않음','11권_2-4 p.1~2·6','▲']},
+ {c:['사후(시각 ✕)','7군단','성은경 보고: 박서호가 상황일지의 「2신속대응사단」 삭제 가능 여부를 문의, 법무실장이 만류, 국회에는 「그런 적 없다」는 답변이 이미 나간 상태','11권_1-2 p.44~46','※']}
+ ]},
+C:{lab:'부록 C',title:'부록 C. 서로 상충하는 기록',lead:'어느 쪽이 맞는지 판단하지 않고 기록을 나란히 둡니다.',
+ cols:['번호','쟁점','기록 A','기록 B','기록 C 이하·비고'],w:[40,150,270,270,438],
+ rows:[
+ {c:['1','국회 해제 의결 시각','01:03경 — 9권_5 p.35(영장 서술), 11권_1-1 p.18(질문문)','01:01 — 강호필 국조 1.14 발언(색인 1권_2 p.18~19)','강호필 국조 2.21 발언은 01:03(색인). 1권 원문은 이 문서 세트에 없어 대조 불가'],f:[['ORIG','매핑표 6절 5번','1권 원문 대조']]},
+ {c:['2','지작사 회의 시각·지시 문구','영장: 00:40~00:55 「신속대응사단은 의명 투입준비태세 유지」 — 9권_5 p.35','7군단 일지 00:55 「합참 대테러부대 출동태세 유지(의명, 2신속대응사단)」 — 10권_9-2 p.29~30, 11권_2-1 p.27(질문문)','3군단 멀티톡 01:02 11항 「신속대응사단은 의명 투입준비태세 유지」 — 6권_1 p.31. 수도군단 일지 00:30(1차 평가) 「신속대응부대 즉각 의명 투입준비태세 유지」 — 10권_9-3 p.52(질문문). 1군단 일지는 「합참 대테러작전부대 투입 준비」와 「신속대응사단 투입 준비」를 모두 기재 — 10권_9-2 p.30(질문문). 일지 원문은 미확인. 7권_6 p.22(시간대별 정리표)는 3군단 멀티톡·수도군단 일지를 근거로 지작사령관 주요 지시·강조사항을 00:36~00:44, 예하 군단장·사단장 계엄상황실 개소 보고를 00:47~00:55로 정리']},
+ {c:['3','박재열 01:00~01:10 지시 내용','영장: 「국회 의결에도 불구하고 계엄군 임무 수행을 할 수 있도록 준비할 것, 제2신속대응사단은 임무 부여 시 즉각 투입될 수 있도록 준비할 것」 — 9권_5 p.35. 일지 01:10 항도 같은 취지 — 11권_2-4 p.3','박재열: 「추후 명령이 내려오면 출동준비를 하라고 지시한 것 외에 지금 출동준비를 하라고 지시한 적은 없다 … 의명 출동준비라는 상황을 2사단에 공유한 차원」 — 11권_2-3 p.45','임태호 8.4: 「2신속대응사단 출동 준비를 잘 해라 … 예하 부대에 준비 지시」 — 11권_2-1 p.13 / 임태호 4.6.: 01시 지시 언급 없음 — 11권_1-2 p.17~20. 김종연: 「의명 임무부여시 즉각 투입될 수 있도록 준비하라는 것은 군단장님이 지시한 거 같습니다. 계엄군 임무수행을 할 수 있도록 준비하라는 문구는 … 기억이 나지 않습니다」 — 11권_2-2 p.10. 박서호: 「지작사 지침을 그대로 받아서 전파」 — 11권_2-1 p.28~30. 임재순: 군단장이 2신속사단장에게 「계엄군 임무를 수행할 수 있기 때문에 즉각 투입될 수 있도록 준비」 지시 — 6권_2 p.16']},
+ {c:['4','「계엄군 임무수행」 문구의 출처','영장: 강호필이 중지 지침을 하달하지 않아 「이에 따라」 박재열이 지시 — 9권_5 p.35','군검사 질문: 계엄 임무 없는 7군단장이 「지작사령관의 지시도 있지 않았는데, 독자적으로」 — 11권_2-3 p.37','박재열: 7.16 「지작사령관 지시가 아니라 내 판단」(p.23~26 피신 인용), 8.10 「제가 생각해서 말한 내용」(p.36~37). 박서호: 「독단적으로 7군단장이 투입 준비 지시한 것으로는 보이지 않습니다」 — 11권_2-1 p.29~30']},
+ {c:['5','계엄사가 7군단에 처음 연락한 경로·시각','박서호: 01~02시경 계엄사가 7군단 지통실에 전화, 「서면 명령으로 정식 하달」 건의 — 11권_2-1 p.24~25','박재열: 02:30경이 최초이고 2사단장 보고가 먼저 — 11권_2-3 p.34','7군단 국회 답변: 02:30경 계엄사 → (2신속사), 02:40 사단장 → 군단장 — 11권_2-4 p.2. 2사단 최초본: 02:30 계엄상황실 → 2신속사 작전참모 유선 — 11권_2-3 p.49. 한영철·권영환·정의현 진술은 2신속사 직통만 언급 — 8권_2-3, 11권_1-1']},
+ {c:['6','사단장 → 군단장 보고 시각','02:39 — 2사단 최초본(11권_2-3 p.49), 임태호 p.14(11권_2-1)','02:40 — 지작사 수정본(11권_2-3 p.50), 7군단 답변(11권_2-4 p.2), 임태호 p.8(11권_2-1)','임태호 한 사람의 진술 안에서도 p.8과 p.14가 다름']},
+ {c:['7','출동준비 ‘중지’ 지시의 주체·시각·내용','지작사령관 02:52 「일체 하지 않도록」 — 11권_2-3 p.16·50, 11권_2-4 p.2, 권대원 11권_2-3 p.13(「02:52에 이미 지시」)','02:50 — 강호필 변호인(색인 9권_9)','02:53 군단장 → 사단장: 최초본은 「지작사 참모장 확인결과 합참에서 출동준비 요청 없었음」 공유(11권_2-3 p.49), 수정본·7군단 답변은 「일체 하지 않도록」 지시(p.50, 11권_2-4 p.2). 02:57 사단장 ↔ 육본 정책실장 「병력이 필요없어요, 휴식 취하세요」(임태호 p.14), 최초본은 「현 상태에서 출동준비 활동 중지」. 02:58 사단장 → 군단장 최초본 「군단장 지시사항 접수」 / 임태호 p.14 「출동준비 하는 것을 중지하겠습니다」 보고 → 「알겠다」. 박재열: 「출동준비 중지는 제가 이미 지시 … 저에게 중지를 건의하지 않았다」(p.44~45). 박서호·김종연: 중지 지시 기억 없음, 「생활관에서 휴식 대기」「다 재워라」(11권_2-1 p.25~26, 11권_2-2 p.12). 김종연은 별도로 「04경 쯤 시간이 좀 지난 후 군단장이 군단 전체 취침시켜라」 지시를 기억(11권_2-2 p.7)'],f:[['ORIG','매핑표 6절 6번','9권_9(02:50)는 색인']]},
+ {c:['8','임태호 진술 내부','p.9(8.4)·4.6. 조서(11권_1-2 p.19): 군단장이 합참 확인 결과 「출동준비를 중지하라」 지시','p.12(8.4): 「지작사령관, 7군단장이 2신속대응사단 중지 지시를 한 것을 들은 적도 없고, 그런 적도 없습니다」','p.14(8.4): 임태호 자신이 「출동준비 하는 것을 중지하겠습니다」 보고. 02:58(p.8) ↔ 02:57(p.14) 김흥준 통화 시각도 다름']},
+ {c:['9','지작사 수정본의 성격','임태호: 지작사 중지 지시로 바뀐 것, 「이 스탠스로 가자」, 강호필 「내가 중지시켰다」 — 11권_2-1 p.12, 11권_1-3 p.23~24','권대원: 「수정이라고 생각하지 않는다」 — 11권_2-3 p.8','박재열: 수정본 내용이 맞다(권대원에게 들음), 「스탠스」 발언은 전혀 사실이 아님 — 11권_2-3 p.41~42. 박재열은 강호필의 「내가 중단시킨 거다」를 들은 적 없음(p.42)']},
+ {c:['10','합참 계엄과 → 2신속사 출동준비 지시의 내용','권영환: 「제2신속대응사단이 아니라 201·203여단인데 당장 출동은 아니고, 만약 출동을 지시하면 출동할 수 있는 준비를 하고, 체육복 입고 자고 있으면 된다」는 이재식 지시를 전달했을 뿐 소요시간·가용병력 파악은 요청한 적 없음 — 8권_2-3 p.26~28(진술인 성명은 인용 쪽에서 확인되지 않음. 문맥상 이재식 지시를 정의현에게 전달한 사람)','정의현(11권_1-1 p.16~18, 진술인 성명 쪽 내 미확인)·한영철(8권_2-3 p.27 질문문): 소요시간 확인 요청을 받아 2시간·각 100명 보고, 이어 「현 시간부로 출동준비」 하달, 복장은 전투복·총기 탄약 미휴대·차량 탑승 준비','이재식·박안수 계열 진술(7권_1-2 p.14~17 질문문)과도 다름. 박재열과 직접 관련 없는 합참 라인이나, 02:30 사건의 성격 규정에 쓰임'],f:[['ORIG','매핑표 6절 14번','8권_2-3 p.26~28, 11권_1-1 p.16~18 진술인 성명 확인']]},
+ {c:['11','박재열의 해제 의결 인지 시점','박재열: 의결 직후, 군단 상황평가회의가 끝난 직후에 인지한 것 같다 — 11권_2-3 p.39','영장: 01:00~01:10에 이미 「국회 의결에도 불구하고」 지시 — 9권_5 p.35','김종연: 2사단장 전화 때 「국회계엄 해제 의결이 중요한 지점」이라고 느낌 — 11권_2-2 p.13(인지 시점 자체는 불명). 3군단장은 01:46까지도 의결을 인지하지 못했다고 진술 — 5권_1 p.14~15']},
+ {c:['12','일지 기재의 신뢰성','박재열: 「상황일지는 명령지가 아닙니다 … 실무자가 요약하여 작성」 — 11권_2-3 p.37~38','김종연: 작성자는 있는 그대로 작성하도록 평소 교육, 일지 삭제된 것은 없는 것 같음 — 11권_2-2 p.11','임재순: 일지의 ‘현 상황’ 항목은 이전 일지를 복사해 붙여 넣은 수준(6권_2 p.13~14), 지시 항목은 회의 내용 기록(p.14~16)']},
+ {c:['13','죄명 표기','내란부화수행 — 1권_1 p.1(색인), 11권_1-2 p.44, 11권_1-3 p.1, 11권_2-1 p.18, 11권_2-4 p.1','내란중요임무종사 — 11권_1-1 p.1(박재열 아닌 사건 표시일 수 있으나 쪽 내 확인 필요)','박재열 사건 번호·죄명은 공소장 부분 미확인'],f:[['FIX','매핑표 6절 1번','공소장에서 죄명·사건번호 확인']]}
+ ]}
+};
+/* ===== 엔진: 슬라이드 조립, 수정 표시, 이동 ===== */
+(function(){
+'use strict';
+const $=(s,r)=>(r||document).querySelector(s);
+const $$=(s,r)=>Array.from((r||document).querySelectorAll(s));
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const FL={FIX:['fix','공소장 교체'],LAW:['law','법리 확인'],ORIG:['orig','원문 확인'],OCR:['ocr','OCR 대조'],INFER:['infer','추론 구분'],HOLD:['hold','추후 확정']};
+const FORD=['FIX','LAW','ORIG','OCR','INFER','HOLD'];
+const PART={a:'Part 0~2 · 결론, 위치, 시간선',b:'Part 3 · 고리별 반박',c:'Part 4~7 · 대응, 비교, 결론',x:'부록',w:'작업용 · 발표 시 건너뜀'};
+const ST={i:'색인',x:'발췌',n:'성명 미확인',q:'질문문'};
+const MK={g:'◎ 유리',b:'▲ 불리',x:'※ 상충·주의',n:'✕ 미확인'};
+const BY={};
+const SRC_RE=/^(\S+)(?:\s+(p\.\S+))?(?:\s+!(\w))?$/;
+
+/* ---------- 문자열 ---------- */
+function xl(r){const s=BY[r];return s?`<a class="xr" href="#" data-go="${esc(r)}">${s.no}</a>`:`?${esc(r)}?`}
+function fmt(t){
+  let h=esc(t);
+  h=h.replace(/\*\*(.+?)\*\*/g,'<b>$1</b>');
+  h=h.replace(/\{\{(\w+)-(\w+)\}\}/g,(m,a,b)=>`슬라이드 ${xl(a)}~${xl(b)}`);
+  h=h.replace(/\{\{([\w,]+)\}\}/g,(m,l)=>`슬라이드 ${l.split(',').map(xl).join('·')}`);
+  return h;
+}
+function chips(s){
+  if(!s)return'';
+  return '<span class="srcs">'+s.split(';').map(p=>{
+    p=p.trim();const m=p.match(SRC_RE);
+    if(!m)return`<span class="src">${esc(p)}</span>`;
+    const st=m[3];
+    return`<span class="src${st?' st-'+st:''}"><b>${esc(m[1])}</b>${m[2]?' '+esc(m[2]):''}${st?`<i>${ST[st]||''}</i>`:''}</span>`;
+  }).join('')+'</span>';
+}
+function ev(items,cls){
+  return`<div class="evs ${cls||''}">`+items.map(it=>
+    `<div class="ev k-${it.k||'z'}"><div class="mk">${it.k?`<span class="mkc">${MK[it.k]}</span>`:''}</div><div class="evb"><div class="evt">${fmt(it.t)}</div>${chips(it.s)}</div></div>`
+  ).join('')+'</div>';
+}
+function walk(o,f){
+  if(Array.isArray(o))o.forEach(x=>walk(x,f));
+  else if(o&&typeof o==='object'){for(const k in o){if(k==='s'&&typeof o[k]==='string')f(o[k]);else walk(o[k],f)}}
+}
+function linkChips(l){
+  if(!l)return'';
+  if(/^[①-⑤]+$/.test(l))return'<span class="lks">'+Array.from(l).map(c=>`<span class="lk">${c}</span>`).join('')+'</span>';
+  return`<span class="lks"><span class="lk w">${esc(l)}</span></span>`;
+}
+function prio(fl){for(const t of FORD){if(fl.some(f=>f[0]===t))return t}return'FIX'}
+
+/* ---------- 본문 레이아웃 ---------- */
+function bCover(s){
+  return`<div class="cv-s">${esc(s.sub)}</div><h1 class="cv-t">${fmt(s.title)}</h1>
+  <div class="cv-h">${esc(s.chainH)}</div>
+  <div class="cv-chain">${s.chain.map(c=>`<div class="cv-link"><b>${esc(c[0])}</b>${fmt(c[1])}</div>`).join('')}</div>
+  <div class="cv-note">${esc(s.note)}</div>`;
+}
+function bCards(s){
+  const g=s.grid||'';
+  return`<div class="cards c${s.cols||2} ${g}">${s.cards.map(c=>
+    `<section class="card${c.hl?' hl':''}"><header>${c.n?`<span class="cn">${esc(c.n)}</span>`:''}<h3>${fmt(c.h)}</h3></header>${c.items?ev(c.items,'in'):''}${c.s?chips(c.s):''}${c.go?`<p class="go">${fmt(c.go)}</p>`:''}</section>`
+  ).join('')}</div>${s.items?ev(s.items):''}`;
+}
+function bChain(s){
+  return`<div class="chain">${s.chain.map((c,i)=>
+    `${i?'<div class="cn-arrow" aria-hidden="true">→</div>':''}<div class="cn-box${c[2]?' me':''}"><h4>${esc(c[0])}</h4>${c[1]?`<p>${fmt(c[1])}</p>`:''}</div>`
+  ).join('')}</div>${ev(s.items)}`;
+}
+function bSteps(s){
+  return`<div class="steps">${s.steps.map(t=>
+    `<div class="step ${t.k||''}"><span class="tm">${esc(t.t)}</span><b>${fmt(t.h)}</b><br>${fmt(t.x)}${t.s?chips(t.s):''}</div>`
+  ).join('')}</div>${ev(s.items)}`;
+}
+function bLadder(s){
+  return`<div class="lad">${s.rungs.map(r=>
+    `<div class="rung${r[3]?' law':''}"><span class="rn">${r[0]}</span><span class="rt">${fmt(r[1])}</span><span class="rs"><span class="go">근거: ${fmt(r[2])}</span></span></div>`
+  ).join('')}</div>`;
+}
+function bSum(s){
+  return`<div class="sum">${s.rows.map(r=>
+    `<div class="srow"><span class="sn">${r[0]}</span><span class="sh">${esc(r[1])}</span><span class="st">${fmt(r[2])}</span><span class="sg">${fmt(r[3])}</span></div>`
+  ).join('')}</div>`;
+}
+const PW=[[40,0],[120,.08],[330,.92],[405,1]];
+function mins(t){const[h,m]=t.split(':').map(Number);let v=h*60+m;if(h<12)v+=1440;return v-1320}
+function pos(v){for(let i=1;i<PW.length;i++){if(v<=PW[i][0]){const a=PW[i-1],b=PW[i];return a[1]+(v-a[0])/(b[0]-a[0])*(b[1]-a[1])}}return 1}
+function bTl(s){
+  const lanes=['합참·계엄사','지작사','7군단','2신속사','국방부·국회'];
+  const ticks=[[60,'23:00'],[120,'00:00'],[180,'01:00'],[240,'02:00'],[300,'03:00'],[360,'04:00']];
+  const axis=`<div class="tl-axis">${ticks.map(t=>`<span class="tl-tick" style="left:${pos(t[0])*100}%">${t[1]}</span>`).join('')}</div>`;
+  const rows=lanes.map((nm,li)=>{
+    const gl=ticks.map(t=>`<span class="tl-gl" style="left:${pos(t[0])*100}%"></span>`).join('');
+    const evs=s.tl.filter(e=>e.lane===li).map(e=>{
+      const a=pos(mins(e.t));
+      if(e.t2){const b=pos(mins(e.t2));return`<span class="tl-bar ${e.k||''}" style="left:${a*100}%;width:${(b-a)*100}%" title="${esc(e.t+'~'+e.t2+' '+e.txt)}">${e.n}</span>`}
+      return`<span class="tl-dot ${e.k||''}" style="left:${a*100}%" title="${esc(e.t+' '+e.txt)}">${e.n}</span>`;
+    }).join('');
+    return`<div class="tl-lane${li===2?' me':''}"><div class="tl-lab">${nm}</div><div class="tl-in">${gl}${evs}</div></div>`;
+  }).join('');
+  const key=s.tl.map(e=>`<div><span class="kn ${e.k||''}">${e.n}</span><span><time>${e.t}${e.t2?'~'+e.t2:''}</time> ${fmt(e.txt)} <small>${esc(e.s)}</small></span></div>`).join('');
+  return`<div class="tl-gr tlg">${axis}${rows}</div><div class="tl-key">${key}</div>`;
+}
+function bBar(s){
+  const P=m=>((m-55)/20*100);
+  const tk=[55,60,65,70,75].map(m=>{const h=Math.floor(m/60),mm=m%60;return`<span class="tk" style="left:${P(m)}%">0${h}:${String(mm).padStart(2,'0')}</span>`}).join('');
+  return`<div class="tb17"><span class="ln"></span>${tk}
+  <span class="rg" style="left:${P(60)}%;width:${P(70)-P(60)}%">7군단 군단-사단 상황평가회의 01:00~01:10</span>
+  <span class="mkr" style="left:${P(63)}%"><span>01:03경 국회 해제 의결 (영장)</span></span>
+  <span class="mkr alt" style="left:${P(61)}%"><span>01:01로 적은 기록 (강호필 국조 1.14, 색인)</span></span></div>${ev(s.items)}`;
+}
+function bToc(s){
+  return`<div class="toc">${s.toc.map(t=>
+    `<button class="goto" data-go="${t.to}"><div><b>${esc(t.h)}</b><span>${esc(t.t)}</span></div><em></em></button>`
+  ).join('')}</div>`;
+}
+function bSrc(s){
+  const m={};
+  SL.forEach(sl=>walk(sl,str=>{str.split(';').forEach(p=>{
+    const mm=p.trim().match(SRC_RE);if(!mm)return;
+    const o=m[mm[1]]||(m[mm[1]]={pg:[],st:new Set()});
+    if(mm[2])mm[2].slice(2).split('·').forEach(x=>{const r=x.split('~').map(Number);if(r.some(isNaN)){if(!o.pg.includes(x))o.pg.push(x);return}const lo=r[0],hi=r[r.length-1];for(let q=lo;q<=hi;q++)o.pg.push(q)});
+    o.st.add(mm[3]||'ok');
+  })}));
+  const vol=f=>parseInt(f,10)||0;
+  const files=Object.keys(m).sort((a,b)=>vol(a)-vol(b)||a.localeCompare(b,'ko',{numeric:true}));
+  const nm=x=>parseInt(x,10)||0;
+  const lab={ok:'확인',i:'색인',x:'검색 발췌',n:'성명 미확인',q:'질문문 인용'};
+  const html=files.map(f=>{
+    const o=m[f];const nums=Array.from(new Set(o.pg.filter(x=>typeof x==='number'))).sort((a,b)=>a-b);const rg=[];nums.forEach(n=>{const l=rg[rg.length-1];if(l&&n===l[1]+1)l[1]=n;else rg.push([n,n])});
+    const pg=rg.map(r=>r[0]===r[1]?r[0]:r[0]+'~'+r[1]).concat(o.pg.filter(x=>typeof x==='string')).join('·');
+    const tags=['ok','i','x','n','q'].filter(k=>o.st.has(k)).map(k=>lab[k]).join(' · ');
+    return`<div><b>${esc(f)}</b>${pg?' p.'+esc(pg):''}<small>${tags}</small></div>`;
+  }).join('');
+  s.srcCount=files.length;
+  return`<div class="srcl">${html}</div>`;
+}
+function bTab(s){
+  const t=s.tab;
+  return`<div class="tabw"><table class="tb"><colgroup>${t.w.map(w=>`<col style="width:${w}px">`).join('')}</colgroup><thead><tr>${t.cols.map(c=>`<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${
+    t.rows.map(r=>`<tr>${r.c.map((c,i)=>`<td class="${i===0?'nm':(/출처|근거/.test(t.cols[i])?'sm':'')}">${fmt(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+}
+function bWork(s){
+  const head=s.steps2?`<ol class="steps2">${s.steps2.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>`:'';
+  return head+`<div class="work">${s.entries.map(e=>
+    `<div class="we" data-go="${e.id}"><span class="wn">${e.no}</span><div><b>${esc(e.t)}</b> ${fmt(e.note)}<span class="wr">${esc(e.ref)}</span></div></div>`
+  ).join('')}</div>`;
+}
+const BODY={ev:s=>ev(s.items),cover:bCover,cards:bCards,chain:bChain,steps:bSteps,ladder:bLadder,sum:bSum,tl:bTl,bar:bBar,toc:bToc,src:bSrc,tab:bTab,work:bWork};
+
+/* ---------- 슬라이드 껍데기 ---------- */
+function titleCls(t){const n=t.length;return n<=24?'s1':n<=52?'s2':n<=86?'s3':'s4'}
+function shell(s,N){
+  const fl=s.fl||[];const has=fl.length>0;
+  const hc=has?`var(--ff-${FL[prio(fl)][0]})`:'';
+  const types=FORD.filter(t=>fl.some(f=>f[0]===t));
+  const ribbon=types.map(t=>`<span class="fchip ${FL[t][0]}">${FL[t][1]}</span>`).join('');
+  const memo=fl.map(f=>`<div class="mr"><span class="fchip ${FL[f[0]][0]}">${FL[f[0]][1]}</span><span class="mt">${fmt(f[2])}</span><span class="mref">${esc(f[1])}</span></div>`).join('');
+  const isCover=s.lay==='cover';
+  const refTxt=s.work?'매핑표 7절':(s.part==='x'?(s.lay==='tab'?s.ref:'부록'):'매핑표 '+s.ref);
+  return`<article class="slide${isCover?' cover':''}" id="sl-${s.no}" aria-label="슬라이드 ${s.no}">
+  ${has?`<div class="hb fx" style="--hc:${hc}"></div>`:''}
+  <div class="top"><span class="part">${PART[s.part]}</span>${linkChips(s.link)}<span class="ribbon fx">${ribbon}</span></div>
+  ${isCover?'':`<h2 class="ttl ${titleCls(s.title)}">${fmt(s.title)}</h2>`}
+  ${s.lead&&!isCover?`<p class="lead">${fmt(s.lead)}</p>`:''}
+  <div class="body${s.dense?' dense':''}">${BODY[s.lay](s)}</div>
+  ${has?`<div class="memo fx" style="--hc:${hc}">${memo}</div>`:''}
+  <div class="foot"><span>2026고합565 · 박재열 변론 요지(초안)</span><span class="sp"></span><span>${esc(refTxt)}</span><span>${s.no} / ${N}</span></div>
+</article>`;
+}
+
+/* ---------- 슬라이드 목록 조립 ---------- */
+function chunkApp(key,app){
+  const BUD=470;
+  const est=(row)=>{let m=1;row.c.forEach((t,i)=>{const cpl=Math.max(4,Math.floor((app.w[i]-16)/11.6));m=Math.max(m,Math.ceil(String(t).length/cpl))});return m*19+15};
+  const groups=[];let cur=[],h=0;
+  app.rows.forEach(r=>{const e=est(r);if(cur.length&&h+e>BUD){groups.push(cur);cur=[];h=0}cur.push(r);h+=e});
+  if(cur.length)groups.push(cur);
+  return groups.map((rows,i)=>{
+    const fl=[];
+    rows.forEach(r=>(r.f||[]).forEach(f=>{
+      const pre=(key==='B'?r.c[0]:r.c[0]+'번')+' · ';
+      if(!fl.some(x=>x[0]===f[0]&&x[1]===f[1]&&x[2]===pre+f[2]))fl.push([f[0],f[1],pre+f[2]]);
+    }));
+    return{id:key+(i+1),ref:app.lab,part:'x',lay:'tab',title:`${app.title} (${i+1}/${groups.length})`,lead:i===0?app.lead:'',tab:{cols:app.cols,w:app.w,rows:rows},fl};
+  });
+}
+const ALL=[];
+SL.forEach(s=>{
+  if(s.split&&s.cards){
+    const per=Math.ceil(s.cards.length/s.split);
+    for(let i=0;i<s.split;i++){
+      const o=Object.assign({},s,{cards:s.cards.slice(i*per,(i+1)*per),title:s.title+` (${i+1}/${s.split})`,grid:'big',cols:2,id:i?s.ref+'-'+(i+1):s.ref,lead:i?'':s.lead});
+      if(i)o.noWork=true;
+      ALL.push(o);
+    }
+  }else{s.id=s.ref;ALL.push(s)}
+});
+ALL.push({id:'toc',ref:'31',part:'x',lay:'toc',title:'부록',lead:'발표 본편은 여기까지입니다. 아래는 반론·질의 대비용 자료와 작업용 목록입니다.',
+  toc:[
+   {h:'출처 목록',t:'본편 슬라이드가 인용한 파일과 쪽, 확인·색인 구분',to:'src'},
+   {h:'부록 A. 불리한 자료와 대응',t:'본편에서 뺀 불리한 자료 15건과 대응 논점',to:'A1'},
+   {h:'부록 B. 기준 시간선 상세',t:'조직별 시간선 33행(12.3 22:40 ~ 12.4 04:45)',to:'B1'},
+   {h:'부록 C. 서로 상충하는 기록',t:'기록끼리 어긋나는 13개 쟁점. 어느 쪽이 맞는지 판단하지 않고 병기',to:'C1'},
+   {h:'수정 대기 목록 (작업용)',t:'공소장 확보 후 고쳐야 할 슬라이드와 원문 확인이 남은 항목. 발표 시에는 건너뜁니다',to:'W1'}]});
+ALL.push({id:'src',ref:'31',part:'x',lay:'src',title:'출처 목록',lead:'본편 슬라이드가 인용한 파일과 쪽입니다. 표시는 매핑표 작업 기준입니다.',
+  fl:[['ORIG','매핑표 6절 6번','색인·검색 발췌·성명 미확인으로 표시된 출처는 원문 쪽을 열람해 ‘확인’으로 올림']]});
+['A','B','C'].forEach(k=>chunkApp(k,APP[k]).forEach(s=>ALL.push(s)));
+
+/* 수정 대기 목록(작업용 슬라이드) 만들기: 번호를 먼저 매기고 항목을 모음 */
+ALL.forEach((s,i)=>{s.no=i+1;BY[s.id]=s});
+function shortT(s){const t=s.title.replace(/^부록 [A-C]\. /,'');return t.length>30?t.slice(0,30)+'…':t}
+const entries={};
+ALL.forEach(s=>!s.noWork&&(s.fl||[]).forEach(f=>{(entries[f[0]]=entries[f[0]]||[]).push({id:s.id,no:s.no,t:shortT(s),ref:f[1],note:f[2]})}));
+function workSlides(){
+  const out=[];let n=1;
+  const mk=(title,list,extra)=>{const per=16;for(let i=0;i<list.length||i===0;i+=per){
+    const part=list.slice(i,i+per);const tot=Math.ceil(list.length/per)||1;
+    out.push(Object.assign({id:'W'+(n++),ref:'7절',part:'w',work:true,lay:'work',title:`${title}${tot>1?` (${i/per+1}/${tot})`:''}`,entries:part},i===0?extra:{}));}};
+  mk('수정 대기 목록 · 공소장 교체',entries.FIX||[],{lead:'공소장 본문을 받은 뒤 순서: ① 2절의 고리 ①~⑤ 문구를 공소사실 원문으로 교체 ② 슬라이드 1~7·7A는 교체하거나 삭제 ③ 서술 공백 A~F를 공소사실과 대조해 살리거나 지움 ④ 어긋난 슬라이드 수정',
+    steps2:null});
+  mk('수정 대기 목록 · 원문 확인',entries.ORIG||[],{lead:'색인·발췌·인용으로만 확인한 내용입니다. 원문 쪽을 열어 대조한 뒤 ‘확인’으로 올립니다.'});
+  mk('수정 대기 목록 · 법리·OCR·추론·확정 보류',[].concat(entries.LAW||[],entries.OCR||[],entries.INFER||[],entries.HOLD||[]).map((e,i,a)=>e),{lead:'법리 확인, OCR 불명 단어 대조, 추론 구분, 추후 확정 표시가 붙은 슬라이드입니다.'});
+  return out;
+}
+/* 유형 라벨 포함하도록 마지막 그룹은 항목에 유형을 덧붙임 */
+['LAW','OCR','INFER','HOLD'].forEach(t=>(entries[t]||[]).forEach(e=>{e.note='['+FL[t][1]+'] '+e.note}));
+workSlides().forEach(w=>ALL.push(w));
+ALL.forEach((s,i)=>{s.no=i+1;BY[s.id]=s});
+const N=ALL.length;
+
+/* ---------- 화면 만들기 ---------- */
+const canvas=$('#canvas'),fitEl=$('#fit'),stage=$('#stage'),root=document.documentElement;
+canvas.innerHTML=ALL.map(s=>shell(s,N)).join('');
+ALL.forEach(s=>{s.el=$('#sl-'+s.no)});
+$$('.goto em').forEach((e,i)=>{const t=ALL.find(s=>s.id==='toc').toc[i];e.textContent='슬라이드 '+BY[t.to].no});
+
+let noflags=false,cur=0;
+function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+const vis=()=>ALL.filter(s=>!(noflags&&s.work));
+function show(sl){
+  const list=vis();let i=list.indexOf(sl);if(i<0){i=list.length-1;sl=list[i]}
+  ALL.forEach(s=>s.el.classList.toggle('on',s===sl));
+  cur=ALL.indexOf(sl);
+  $('#cnt').textContent=`${i+1} / ${list.length}`;
+  $('#prev').disabled=i===0;$('#next').disabled=i===list.length-1;
+  document.title='박재열 변론 슬라이드';
+  if(root.classList.contains('reader'))window.scrollTo(0,0);
+  lsSet('deck565.cur',sl.id);
+}
+function step(d){const list=vis();const i=list.indexOf(ALL[cur]);const j=Math.max(0,Math.min(list.length-1,(i<0?0:i)+d));show(list[j])}
+function goId(id){const s=BY[id];if(s){closeOv();show(s)}}
+
+function fit(){
+  const reader=window.matchMedia('(max-width: 820px)').matches;
+  root.classList.toggle('reader',reader);
+  if(reader){fitEl.style.width='';fitEl.style.height='';canvas.style.transform='';return}
+  const r=stage.getBoundingClientRect();
+  const sc=Math.max(.2,Math.min(r.width/1280,r.height/720));
+  fitEl.style.width=1280*sc+'px';fitEl.style.height=720*sc+'px';
+  canvas.style.transform=`scale(${sc})`;
+}
+
+/* 수정 표시 켜기/끄기 */
+function setFlags(on){
+  noflags=!on;document.body.classList.toggle('noflags',noflags);
+  $('#bFl').setAttribute('aria-pressed',on?'true':'false');
+  lsSet('deck565.flags',on?'1':'0');
+  show(ALL[cur]);
+}
+
+/* 전체 보기 */
+const ov=$('#ov'),ovIn=$('#ovIn');
+function openOv(){
+  const list=vis();let last='',html='',open=false;
+  list.forEach(s=>{
+    if(s.part!==last){last=s.part;if(open)html+='</div>';html+=`<h3>${PART[s.part]}</h3><div class="ovg">`;open=true}
+    const types=FORD.filter(t=>(s.fl||[]).some(f=>f[0]===t));
+    const t=s.lay==='cover'?s.title:(s.title.length>70?s.title.slice(0,70)+'…':s.title);
+    const mr=(s.part==='a'||s.part==='b'||s.part==='c')?' · 매핑표 '+s.ref:'';
+    html+=`<button class="ovc${s===ALL[cur]?' cur':''}" data-go="${s.id}"><span class="ovn">${s.no}${mr}</span><span class="ovt">${esc(t)}</span><span class="ovf">${types.map(x=>`<span class="dotf ${FL[x][0]}" title="${FL[x][1]}"></span>`).join('')}</span></button>`;
+  });
+  if(open)html+='</div>';
+  ovIn.innerHTML=`<div class="ov-h"><h2>전체 슬라이드 ${list.length}장</h2><span class="sp"></span><button class="btn" id="ovX">닫기</button></div>`+html;
+  ov.hidden=false;
+  const c=$('.ovc.cur',ovIn);if(c&&c.scrollIntoView)c.scrollIntoView({block:'center'});
+}
+function closeOv(){ov.hidden=true}
+
+/* 범례 */
+const lg=$('#lg');
+function openLg(){
+  const F=(t,d)=>`<div class="lgr"><span class="fchip ${FL[t][0]}">${FL[t][1]}</span><span>${d}</span></div>`;
+  $('#lgP').innerHTML=`<div class="ov-h"><h2>범례</h2><span class="sp"></span><button class="btn" id="lgX">닫기</button></div>
+  <h3>근거의 성격</h3>
+  <div class="lgr"><span class="mkc" style="background:var(--good-soft);color:var(--good)">◎ 유리</span><span>박재열에게 유리한 자료</span></div>
+  <div class="lgr"><span class="mkc" style="background:var(--bad-soft);color:var(--bad)">▲ 불리</span><span>박재열에게 불리하거나 특검·강호필 측이 쓸 자료</span></div>
+  <div class="lgr"><span class="mkc" style="background:var(--warn-soft);color:var(--warn)">※ 상충·주의</span><span>기록끼리 어긋나거나 OCR이 불명확해 원문 확인이 필요한 항목</span></div>
+  <div class="lgr"><span class="mkc" style="background:var(--none-soft);color:var(--none)">✕ 미확인</span><span>문서에서 확인되지 않음</span></div>
+  <h3>출처 칩</h3>
+  <div class="lgr"><span class="src"><b>11권_2-3</b> p.27</span><span>이번 작업에서 해당 쪽을 열어 대조함(확인)</span></div>
+  <div class="lgr"><span class="src st-i"><b>9권_9</b><i>색인</i></span><span>색인표 기재를 따름. 인용 전에 원문 대조 필요</span></div>
+  <div class="lgr"><span class="src st-x"><b>11권_1-3</b> p.28<i>발췌</i></span><span>검색으로 얻은 발췌</span></div>
+  <div class="lgr"><span class="src st-n"><b>6권_2</b> p.15<i>성명 미확인</i></span><span>진술인 성명이 인용 쪽에서 확인되지 않음</span></div>
+  <div class="lgr"><span class="src st-q"><b>11권_2-4</b> p.3<i>질문문</i></span><span>군검사 질문문에 인용된 내용(원문 자체는 아님)</span></div>
+  <h3>수정 표시 (공소장 확보 후 손볼 곳, 상단 줄무늬와 하단 메모 상자)</h3>
+  ${F('FIX','공소장 본문 확보 후 교체하거나 삭제할 슬라이드')}
+  ${F('ORIG','색인·발췌·인용으로만 확인한 내용. 원문을 열어 대조')}
+  ${F('LAW','문서에서 확인되지 않는 법리. 변호인 판단')}
+  ${F('OCR','OCR 불명 단어. 원본 이미지 대조')}
+  ${F('INFER','기록과 추론이 섞인 부분. 구분해서 발표')}
+  ${F('HOLD','일단 포함하되 나중에 확정')}
+  <h3>키보드</h3>
+  <div class="lgr"><span><b>← →</b></span><span>이전·다음 슬라이드 (Space, PageUp/PageDown도 가능)</span></div>
+  <div class="lgr"><span><b>G</b></span><span>전체 보기</span></div>
+  <div class="lgr"><span><b>F</b></span><span>수정 표시 켜기/끄기</span></div>
+  <div class="lgr"><span><b>L · Esc</b></span><span>범례 열기 · 닫기</span></div>`;
+  lg.hidden=false;
+}
+function closeLg(){lg.hidden=true}
+
+/* ---------- 이벤트 ---------- */
+$('#prev').addEventListener('click',()=>step(-1));
+$('#next').addEventListener('click',()=>step(1));
+$('#bOv').addEventListener('click',openOv);
+$('#bLg').addEventListener('click',openLg);
+$('#bFl').addEventListener('click',()=>setFlags(noflags));
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-go]');
+  if(t){e.preventDefault();goId(t.getAttribute('data-go'));return}
+  if(e.target.id==='ovX')closeOv();
+  if(e.target.id==='lgX'||e.target===lg)closeLg();
+});
+document.addEventListener('keydown',e=>{
+  if(e.metaKey||e.ctrlKey||e.altKey)return;
+  const k=e.key;
+  if(k==='Escape'){closeOv();closeLg();return}
+  if(!ov.hidden||!lg.hidden)return;
+  if(k==='ArrowRight'||k==='PageDown'||k===' '){e.preventDefault();step(1)}
+  else if(k==='ArrowLeft'||k==='PageUp'){e.preventDefault();step(-1)}
+  else if(k==='Home'){show(vis()[0])}
+  else if(k==='End'){const l=vis();show(l[l.length-1])}
+  else if(k==='g'||k==='G'){openOv()}
+  else if(k==='f'||k==='F'){setFlags(noflags)}
+  else if(k==='l'||k==='L'){openLg()}
+});
+let px=0,py=0;
+stage.addEventListener('pointerdown',e=>{px=e.clientX;py=e.clientY});
+stage.addEventListener('pointerup',e=>{
+  const dx=e.clientX-px,dy=e.clientY-py;
+  if(Math.abs(dx)>70&&Math.abs(dy)<45&&e.pointerType!=='mouse')step(dx<0?1:-1);
+});
+window.addEventListener('resize',fit);
+if(window.ResizeObserver)new ResizeObserver(fit).observe(stage);
+
+/* ---------- 시작 ---------- */
+if(lsGet('deck565.flags')==='0'){noflags=true;document.body.classList.add('noflags');$('#bFl').setAttribute('aria-pressed','false')}
+fit();
+let start=ALL[0];
+const h=(location.hash||'').match(/^#s(\d+)$/);
+if(h&&ALL[+h[1]-1])start=ALL[+h[1]-1];
+else{const saved=lsGet('deck565.cur');if(saved&&BY[saved]&&!(noflags&&BY[saved].work))start=BY[saved]}
+show(start);
+})();
+</script>
+
+</body></html>
