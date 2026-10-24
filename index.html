@@ -195,7 +195,7 @@ body.noflags .fx{display:none!important}
 .tl-gl{position:absolute;top:0;bottom:0;width:1px;background:var(--rule2)}
 .tl-dot{position:absolute;top:50%;width:23px;height:23px;margin:-11.5px 0 0 -11.5px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;background:var(--none);color:var(--paper);font-variant-numeric:tabular-nums}
 .tl-dot.g,.tl-bar.g{background:var(--good)}.tl-dot.b,.tl-bar.b{background:var(--bad)}.tl-dot.x,.tl-bar.x{background:var(--warn)}
-.tl-bar{position:absolute;top:50%;height:24px;margin-top:-12px;border-radius:12px;background:var(--none);color:var(--paper);display:flex;align-items:center;padding-left:6px;font-size:12px;font-weight:700}
+.tl-bar{position:absolute;top:50%;min-width:26px;height:24px;margin-top:-12px;border-radius:12px;background:var(--none);color:var(--paper);display:flex;align-items:center;padding-left:6px;font-size:12px;font-weight:700}
 .tl-key{columns:2;column-gap:28px;margin-top:6px;font-size:12px;line-height:1.35}
 .tl-key div{break-inside:avoid;display:flex;gap:8px;padding:1px 0}
 .tl-key .kn{flex:none;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;background:var(--none);color:var(--paper)}
@@ -916,7 +916,7 @@ function bSum(s){
     `<div class="srow"><span class="sn">${r[0]}</span><span class="sh">${esc(r[1])}</span><span class="st">${fmt(r[2])}</span><span class="sg">${fmt(r[3])}</span></div>`
   ).join('')}</div>`;
 }
-const PW=[[40,0],[120,.08],[330,.92],[405,1]];
+const PW=[[40,0],[120,.08],[330,.9],[420,1]];
 function mins(t){const[h,m]=t.split(':').map(Number);let v=h*60+m;if(h<12)v+=1440;return v-1320}
 function pos(v){for(let i=1;i<PW.length;i++){if(v<=PW[i][0]){const a=PW[i-1],b=PW[i];return a[1]+(v-a[0])/(b[0]-a[0])*(b[1]-a[1])}}return 1}
 function bTl(s){
